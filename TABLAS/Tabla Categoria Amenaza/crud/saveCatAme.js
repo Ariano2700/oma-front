@@ -1,37 +1,25 @@
 /*formulario*/
-const formAlimento = document.getElementById("formAlimento");
+const formAlimento = document.getElementById("formRecinto");
 /*BOTONES */
 const saveTb = document.getElementById("saveTb");
 
-function formatFechaCompra(fecha_compra) {
-  const fechaCompraDate = new Date(fecha_compra);
-  const year = fechaCompraDate.getFullYear();
-  const month = String(fechaCompraDate.getMonth() + 1).padStart(2, "0");
-  const day = String(fechaCompraDate.getDate() + 1).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
 function saveData() {
   /*Inputs*/
-  const marca = document.getElementById("marca").value;
-  const fechaCompra = document.getElementById("fecha_compra").value;
-  const precioUnitario = document.getElementById("precio_unitario").value;
-  const volumen = document.getElementById("volumen").value;
-  const stock = document.getElementById("stock").value;
-  if (!marca || !fechaCompra || !precioUnitario || !volumen || !stock) {
+  const minadriInput = document.getElementById("MINADRI").value;
+  const citeslInput = document.getElementById("CITESL").value;
+  const uicnInput = document.getElementById("UICN").value;
+  if (!minadriInput || !citeslInput || !uicnInput) {
     const title = "Campos incompletos";
     const text =
       "Faltan campos en el formulario para completar la subida de datos";
     alertNoComplete(title, text);
   } else {
-    const fechaFormat = formatFechaCompra(fechaCompra);
     const dataToSend = {
-      marca: marca,
-      fecha_compra: fechaFormat,
-      precio_unitario: precioUnitario,
-      volumen: volumen,
-      stock: stock,
+      minagri: minadriInput,
+      cites: citeslInput,
+      uicn: uicnInput,
     };
-    fetch(`http://localhost:8080/api/alimento/guardar/alimento`, {
+    fetch(`http://localhost:8080/api/categoriaamenaza/guardar/categoriaamenaza`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,6 +29,7 @@ function saveData() {
       .then((response) => {
         if (response.ok) {
           alertSuccess();
+          //window.location.reload();
           return response.json();
         } else {
           const title = "Datos no mandados";
@@ -50,11 +39,6 @@ function saveData() {
         }
       })
       .then((data) => {
-        console.log("Marca: " + marca);
-        console.log("Fecha de Compra: " + fechaCompra);
-        console.log("Precio Unitario: " + precioUnitario);
-        console.log("Volumen: " + volumen);
-        console.log("Stock: " + stock);
         console.log("datos subidos", data);
       })
       .catch((error) => {
@@ -63,7 +47,7 @@ function saveData() {
   }
 }
 saveTb.addEventListener("click", function (e) {
-  //e.preventDefault();
+  e.preventDefault();
   saveData();
 });
 

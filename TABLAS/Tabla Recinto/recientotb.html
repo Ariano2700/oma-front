@@ -44,7 +44,7 @@
         <!-- Título de la página -->
         <h1 class="text-center">Recinto</h1>
         <!-- Formulario para guardar datos -->
-        <form action="aquivael.php" method="post">
+        <form id="formRecinto" class="form_recinto">
           <fieldset>
             <div class="form-row">
               <div class="form-group col-md-4">
@@ -60,25 +60,19 @@
                 <input type="text" id="tipo" name="" class="form-control" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="nombre_comun">Estado:</label>
-                <input type="text" id="nombre_comun" name="nombre_comun" class="form-control" required>
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" name="estado" class="form-control" required>
               </div>
               <div class="form-group col-md-6">
                 <label for="ubicacion">Ubicacion:</label>
                 <input type="text" id="ubicacion" name="ubicacion" class="form-control" required>
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-group col-md-12">
-                <label for="talla">Description:</label>
-                <input type="description_especie" id="description_especie" name="description_especie"
-                  class="form-control" required>
-              </div>
-            </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-success">Guardar</button>
-              <button type="submit" class="btn btn-warning">Editar</button>
-              <button type="submit" class="btn btn-danger">Eliminar</button>
+              <button type="submit" class="btn btn-success" id="saveTb">Guardar</button>
+              <button type="submit" class="btn btn-warning" id="editTb">Editar</button>
+              <button type="submit" class="btn btn-danger" id="deleteTb">Eliminar</button>
+              <button type="button" class="btn btn-primary" id="searchTb">Buscar</button>
             </div>
           </fieldset>
         </form>
@@ -124,7 +118,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"integrity="sha384-pzjw8f+ua9di5k75us5jl65ra9H1L7xnBykiJrW5B5N5UpjRv5Koy0FlevMi5D5G"crossorigin="anonymous"></script>
 
   <!-- enlace de script-->
-  <script src="scrip.js"></script>
+  <!--CRUD-->
+  <script src="crud/deleteRecinto.js"></script>
+  <script src="crud/saveRecinto.js"></script>
+  <script src="crud/searchRecinto.js"></script>
+  <script src="crud/updateRecinto.js"></script>
+  <!--CRUD-->
+  <script src="mostrarRecinto.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

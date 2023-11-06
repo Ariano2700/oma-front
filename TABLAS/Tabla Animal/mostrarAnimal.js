@@ -15,16 +15,57 @@ async function ConfigTable() {
     throw error;
   }
 }
-function formatFechaCompra(fecha_compra) {
-  const fechaCompraDate = new Date(fecha_compra);
-  const year = fechaCompraDate.getFullYear();
-  const month = String(fechaCompraDate.getMonth() + 1).padStart(2, "0");
-  const day = String(fechaCompraDate.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-async function obtenerDatosAlimentos() {
+async function getNameRecinto(idRecinto) {
   try {
-    const response = await fetch("http://localhost:8080/api/alimento/all", {
+    const response = await fetch(
+      `http://localhost:8080/api/recinto/porId/${idRecinto}`,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    if (!response.ok) {
+      throw new Error("La respuesta no es válida");
+    }
+    const data = await response.json();
+    if (data) {
+      const nombreRecinto = data.nombre;
+      return nombreRecinto;
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+async function getNameEspecie(idEspecie) {
+  try {
+    const response = await fetch(
+      `http://localhost:8080/api/especie/porId/${idEspecie}`,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    if (!response.ok) {
+      throw new Error("La respuesta no es válida");
+    }
+    const data = await response.json();
+    if (data) {
+      const nombreComun = data.nombreComun;
+      return nombreComun;
+    }
+  } catch (error) {
+    console.error("ERROR AL OBTENER NOMBRE" + error);
+  }
+}
+async function getSexo(sexo) {
+  const sexoAnimal = sexo === "M" ? "Masculino" : "Femenino";
+  return sexoAnimal;
+}
+
+async function obtenerDatosAnimales() {
+  try {
+    const response = await fetch("http://localhost:8080/api/animal/all", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -33,26 +74,31 @@ async function obtenerDatosAlimentos() {
       throw new Error("Error al obtener datos");
     }
     const data = await response.json();
-
     if (data) {
-      const dataAlimentos = data.map((item) => [
-        item.idAlimento,
-        item.marca,
-        formatFechaCompra(item.fecha_compra),
-        item.precio_unitario,
-        item.volumen,
-        item.stock,
+      const promises = data.map(async (item) => [
+        item.idAnimal,
+        item.nombreAnimal,
+        item.edad,
+        await getSexo(item.sexo),
+        item.tipo,
+        item.estado,
+        await getNameEspecie(item.idEspecie),
+        await getNameRecinto(item.idRecinto),
       ]);
-      return dataAlimentos;
+      const dataAnimales = await Promise.all(promises);
+
+      return dataAnimales;
     }
   } catch (error) {
     console.error("Error al obtener datos: " + error);
   }
 }
+
 const config = ConfigTable();
 const languageConfig = config.language;
 async function mostrarTable() {
-  const dataSet = await obtenerDatosAlimentos();
+  const dataSet = await obtenerDatosAnimales();
+  console.log(dataSet);
   new DataTable("#creando-datable", {
     //responsive
     responsive: {
@@ -125,31 +171,23 @@ async function mostrarTable() {
       { responsivePriority: 1, targets: 1 },
       { responsivePriority: 2, targets: 3 },
 
-      /*{
-                  target: 0,
-                  className: 'dtr-control',
-                  orderable: false,
-                  visible: true,
-              },*/
-      /*{
-                  target: 2,
-                  className: "d-flex justify-content-center"//centrar columna
-              },*/
       {
         target: 5, //numero de colunma
-        visible: false, // no visible
+        visible: true, // no visible
         searchable: false, // no se busca
       },
     ],
 
     //colunas
     columns: [
-      { title: "ID ALIMENTO" },
-      { title: "MARCA" },
-      { title: "FECHA DE COMPRA" },
-      { title: "PRECIO UNITARIO" },
-      { title: "VOLUMEN" },
-      { title: "STOCK" },
+      { title: "ID ANIMAL" },
+      { title: "NOMBRE" },
+      { title: "EDAD" },
+      { title: "SEXO" },
+      { title: "TIPO" },
+      { title: "ESTADO" },
+      { title: "ESPECIE" },
+      { title: "RECINTO" },
     ],
 
     //data que se usa

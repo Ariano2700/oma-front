@@ -1,37 +1,41 @@
 /*formulario*/
-const formAlimento = document.getElementById("formAlimento");
+const formAlimento = document.getElementById("formAnimal");
 /*BOTONES */
 const saveTb = document.getElementById("saveTb");
 
-function formatFechaCompra(fecha_compra) {
-  const fechaCompraDate = new Date(fecha_compra);
-  const year = fechaCompraDate.getFullYear();
-  const month = String(fechaCompraDate.getMonth() + 1).padStart(2, "0");
-  const day = String(fechaCompraDate.getDate() + 1).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
 function saveData() {
   /*Inputs*/
-  const marca = document.getElementById("marca").value;
-  const fechaCompra = document.getElementById("fecha_compra").value;
-  const precioUnitario = document.getElementById("precio_unitario").value;
-  const volumen = document.getElementById("volumen").value;
-  const stock = document.getElementById("stock").value;
-  if (!marca || !fechaCompra || !precioUnitario || !volumen || !stock) {
+  const nombreInput = document.getElementById("nombre").value;
+  const edadInput = document.getElementById("edad").value;
+  const sexoSelect = document.getElementById("sexo").value;
+  const tipoInput = document.getElementById("tipo").value;
+  const estadoInput = document.getElementById("estado").value;
+  const idRecinto = document.getElementById("id_recinto").value;
+  const idEspecie = document.getElementById("id_especie").value;
+  if (
+    !nombreInput ||
+    !edadInput ||
+    !sexoSelect ||
+    !tipoInput ||
+    !estadoInput ||
+    !idRecinto ||
+    !idEspecie
+  ) {
     const title = "Campos incompletos";
     const text =
       "Faltan campos en el formulario para completar la subida de datos";
     alertNoComplete(title, text);
   } else {
-    const fechaFormat = formatFechaCompra(fechaCompra);
     const dataToSend = {
-      marca: marca,
-      fecha_compra: fechaFormat,
-      precio_unitario: precioUnitario,
-      volumen: volumen,
-      stock: stock,
+      nombreAnimal: nombreInput,
+      edad: edadInput,
+      sexo: sexoSelect,
+      tipo: tipoInput,
+      estado: estadoInput,
+      idEspecie: idEspecie,
+      idRecinto: idRecinto,
     };
-    fetch(`http://localhost:8080/api/alimento/guardar/alimento`, {
+    fetch(`http://localhost:8080/api/animal/guardar/animal`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,11 +54,6 @@ function saveData() {
         }
       })
       .then((data) => {
-        console.log("Marca: " + marca);
-        console.log("Fecha de Compra: " + fechaCompra);
-        console.log("Precio Unitario: " + precioUnitario);
-        console.log("Volumen: " + volumen);
-        console.log("Stock: " + stock);
         console.log("datos subidos", data);
       })
       .catch((error) => {

@@ -34,7 +34,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <br><img src="../Img/LogoOMA.png" alt="" class="img-fluid">
+                    <br><img src="../../Img/LogoOMA.png" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
         <!-- Título de la página -->
         <h1 class="text-center">CATEGORIA AMENAZA</h1>
         <!-- Formulario para guardar datos -->
-        <form action="aquivael.php" method="post">
+        <form id="formcatame" class="form_catame">
           <fieldset>
             <div class="form-row">
               <div class="form-group col-md-3">
@@ -65,9 +65,10 @@
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-success">Guardar</button>
-              <button type="submit" class="btn btn-warning">Editar</button>
-              <button type="submit" class="btn btn-danger">Eliminar</button>
+              <button type="submit" class="btn btn-success" id="saveTb">Guardar</button>
+              <button type="submit" class="btn btn-warning" id="editTb">Editar</button>
+              <button type="submit" class="btn btn-danger" id="deleteTb">Eliminar</button>
+              <button type="button" class="btn btn-primary" id="searchTb">Buscar</button>
             </div>
           </fieldset>
         </form>
@@ -113,7 +114,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"integrity="sha384-pzjw8f+ua9di5k75us5jl65ra9H1L7xnBykiJrW5B5N5UpjRv5Koy0FlevMi5D5G"crossorigin="anonymous"></script>
 
   <!-- enlace de script-->
-  <script src="scrip.js"></script>
+  <!--CRUD-->
+  <script src="crud/deleteCatAme.js"></script>
+  <script src="crud/saveCatAme.js"></script>
+  <script src="crud/searchCatAme.js"></script>
+  <script src="crud/updateCatAme.js"></script>
+  <!--CRUD-->
+  <script src="mostrarCatAme.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

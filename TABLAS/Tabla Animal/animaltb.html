@@ -51,7 +51,7 @@
         <!-- Título de la página -->
         <h1 class="text-center">ANIMAL</h1>
         <!-- Formulario para guardar datos -->
-        <form action="aquivael.php" method="post">
+        <form id="formAnimal" class="form_animal">
           <fieldset>
             <div class="form-row">
               <div class="form-group col-md-4">
@@ -59,8 +59,8 @@
                 <input type="number" id="id_animal" name="id_animal" class="form-control" required>
               </div>
               <div class="form-group col-md-4">
-                <label for="mombre">Nombre:</label>
-                <input type="text" id="mombre" name="mombre" class="form-control" required>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" required>
               </div>
               <div class="form-group col-md-4">
                 <label for="edad">Edad:</label>
@@ -69,8 +69,8 @@
               <div class="form-group col-md-4">
                 <label for="sexo">Sexo:</label>
                 <select id="sexo" name="sexo" class="form-control" required>
-                  <option value="macho">M</option>
-                  <option value="hembra">F</option>
+                  <option value="M">Masculino</option>
+                  <option value="F">Femenino</option>
                 </select>
               </div>
               <div class="form-group col-md-4">
@@ -81,12 +81,21 @@
                 <label for="estado">Estado:</label>
                 <input type="text" id="estado" name="estado" class="form-control" required>
               </div>
+              <div class="form-group col-md-4">
+                <label for="id_especie">Id especie:</label>
+                <input type="number" id="id_especie" name="id_especie" class="form-control" required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="id_recinto">Id recinto:</label>
+                <input type="number" id="id_recinto" name="id_recinto" class="form-control" required>
+              </div>
               
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-success">Guardar</button>
-              <button type="submit" class="btn btn-warning">Editar</button>
-              <button type="submit" class="btn btn-danger">Eliminar</button>
+              <button type="submit" class="btn btn-success" id="saveTb">Guardar</button>
+              <button type="submit" class="btn btn-warning" id="editTb">Editar</button>
+              <button type="submit" class="btn btn-danger" id="deleteTb">Eliminar</button>
+              <button type="button" class="btn btn-primary" id="searchTb">Buscar</button>
             </div>
           </fieldset>
         </form>
@@ -142,7 +151,14 @@
     crossorigin="anonymous"></script>
 
   <!-- enlace de script-->
-  <script src="scrip.js"></script>
+  <!--CRUD-->
+  <script src="crud/deleteAnimal.js"></script>
+  <script src="crud/saveAnimal.js"></script>
+  <script src="crud/searchAnimal.js"></script>
+  <script src="crud/updateAnimal.js"></script>
+  <!--CRUD-->
+  <script src="mostrarAnimal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

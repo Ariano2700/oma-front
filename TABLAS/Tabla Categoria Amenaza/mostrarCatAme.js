@@ -15,16 +15,10 @@ async function ConfigTable() {
     throw error;
   }
 }
-function formatFechaCompra(fecha_compra) {
-  const fechaCompraDate = new Date(fecha_compra);
-  const year = fechaCompraDate.getFullYear();
-  const month = String(fechaCompraDate.getMonth() + 1).padStart(2, "0");
-  const day = String(fechaCompraDate.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-async function obtenerDatosAlimentos() {
+
+async function obtenerDatosRecintos() {
   try {
-    const response = await fetch("http://localhost:8080/api/alimento/all", {
+    const response = await fetch("http://localhost:8080/api/categoriaamenaza/all", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -32,30 +26,28 @@ async function obtenerDatosAlimentos() {
     if (!response.ok) {
       throw new Error("Error al obtener datos");
     }
-
     const data = await response.json();
-
     if (data) {
-      const dataAlimentos = data.map((item) => [
-        item.idAlimento,
-        item.marca,
-        formatFechaCompra(item.fecha_compra),
-        item.precio_unitario,
-        item.volumen,
-        item.stock,
+      const promises = data.map(async (item) => [
+        item.idCategoriaAmenaza,
+        item.minagri,
+        item.cites,
+        item.uicn,
       ]);
-      return dataAlimentos;
+      const dataCatAme = await Promise.all(promises);
+
+      return dataCatAme;
     }
   } catch (error) {
     console.error("Error al obtener datos: " + error);
   }
 }
-const dataSet = obtenerDatosAlimentos();
 
 const config = ConfigTable();
 const languageConfig = config.language;
 async function mostrarTable() {
-  const dataSet = await obtenerDatosAlimentos();
+  const dataSet = await obtenerDatosRecintos();
+  console.log(dataSet);
   new DataTable("#creando-datable", {
     //responsive
     responsive: {
@@ -128,31 +120,19 @@ async function mostrarTable() {
       { responsivePriority: 1, targets: 1 },
       { responsivePriority: 2, targets: 3 },
 
-      /*{
-                  target: 0,
-                  className: 'dtr-control',
-                  orderable: false,
-                  visible: true,
-              },*/
-      /*{
-                  target: 2,
-                  className: "d-flex justify-content-center"//centrar columna
-              },*/
       {
-        target: 5, //numero de colunma
-        visible: false, // no visible
+        target: 3, //numero de colunma
+        visible: true, // no visible
         searchable: false, // no se busca
       },
     ],
 
     //colunas
     columns: [
-      { title: "ID ALIMENTO" },
-      { title: "MARCA" },
-      { title: "FECHA DE COMPRA" },
-      { title: "PRECIO UNITARIO" },
-      { title: "VOLUMEN" },
-      { title: "STOCK" },
+      { title: 'ID CATEGORIA AMENAZA' },
+      { title: 'MINAGRI' },
+      { title: 'CITES' },
+      { title: 'UICN' },
     ],
 
     //data que se usa
