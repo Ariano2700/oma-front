@@ -2,8 +2,6 @@
 const formAlimento = document.getElementById("formAlimento");
 /*BOTONES */
 const saveTb = document.getElementById("saveTb");
-const editTb = document.getElementById("editTb");
-const deleteTb = document.getElementById("deleteTb");
 
 function formatFechaCompra(fecha_compra) {
   const fechaCompraDate = new Date(fecha_compra);
