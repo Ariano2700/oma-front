@@ -1,0 +1,88 @@
+/* Estilos generales */
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #5aa65d; /* Cambia el color de fondo */
+    color: white;
+    padding: 10px 0;
+}
+
+
+/* Estilos para el encabezado */
+/* Estilos para el encabezado */
+header {
+    color: #5aa65d; /* Cambia el color de fondo */
+    color: white;
+    padding: 10px 0;
+}
+
+
+/* Estilos para el pie de página */
+footer {
+    background-color: #5aa65d;
+    color: white;
+}
+
+
+.accordion-body .form-row .form-group .form-control{
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    padding: 5px;
+}
+
+/*-------------estilos checkbox----------------*/
+/* Estilo para el contenedor principal */
+.contenedor {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Estilo para el encabezado de clase */
+.encabezado-clase {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Estilo para los grupos de casillas de verificación */
+.grupo-checkbox {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+/*-------------estilos ---------------*/
+
+
+.grupo-tabla {
+    width: 50%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.grupo-tabla th {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    background-color: #f2f2f2;
+    font-weight: normal;
+}
+
+.grupo-tabla td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.grupo-tabla tr td input{
+    width: 100%;
+    box-sizing: border-box;
+}
+    
+

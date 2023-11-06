@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="Zoologico,html">
+    <meta name="Description" content="Zoo Margarita .Meta tags">
+    <meta name="Distribution" content="global">
+    <meta name="Robots" content="all">
+    <link rel="stylesheet" href="styles-from.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../Main/Style.css">
+    <title>HISTORIAL CLINICO</title>
+    <link rel="shortcut icon" href="../Img/icooma.png">
+</head>
+<body>
+    <section class="Dashboard_Text">
+        
+        <main>
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <br><img src="../Img/LogoOMA.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container mt-4">
+                <h1 class="text-center">HISTORIAL CLINICO</h1>
+        
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <!--____________________________________________--->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            <legend>Datos Principales</legend>
+                        </button>
+                      </h2>
+                      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            <form action="guardar_datos_principalales">
+                                <fieldset>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="identificacion">Identificacion:</label>
+                                            <input type="text" id="identificacion" name="identificacion" class="form-control" style="border: 1px solid #ccc; border-radius: 5px; padding: 5px;" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="nombre_comun">Nombre Comun:</label>
+                                            <input type="text" id="nombre_comun" name="nombre_comun" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="especie">Especie:</label>
+                                            <input type="text" id="especie" name="especie" class="form-control" required>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="edad">Edad:</label>
+                                            <input type="number" id="edad" name="edad" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="sexo">Sexo:</label>
+                                        <select id="sexo" name="sexo" class="form-control" required>
+                                            <option value="macho">Macho</option>
+                                            <option value="hembra">Hembra</option>
+                                        </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="marca">Marca:</label>
+                                            <textarea id="marca" name="marca" class="form-control" required></textarea>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-success">Guardar</button>
+                                        <button type="submit" class="btn btn-warning">Editar</button>
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!--____________________________________________--->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                            <legend>Datos Cuidador</legend>
+                        </button>
+                      </h2>
+                      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <form action="guardar_datos_cuidador">
+                                <fieldset>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="cuidador">Cuidador:</label>
+                                            <input type="text" id="cuidador" name="cuidador" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="telefono">Telefono:</label>
+                                            <input type="text" id="telefono" name="telefono" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="email">Email:</label>
+                                            <input type="email" id="email" name="email" class="form-control" required>
+                                        </div> 
+                                    </div>
+                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="direccion">Dirección:</label>
+                                            <textarea id="direccion" name="direccion" class="form-control" required></textarea>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-success">Guardar</button>
+                                        <button type="submit" class="btn btn-warning">Editar</button>
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </div>
+                    
+                                </fieldset>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!--____________________________________________--->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                            <legend>Recibio y Tratante</legend>
+                        </button>
+                      </h2>
+                      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <form action="guardar_recibo_tratante">
+                                <fieldset>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="recibio">Recibio:</label>
+                                            <input type="text" id="recibio" name="recibio" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="tratante">M.V Tratante:</label>
+                                            <input type="text" id="tratante" name="tratante" class="form-control" required>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-success">Guardar</button>
+                                        <button type="submit" class="btn btn-warning">Editar</button>
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </div>
+                    
+                                </fieldset>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!--____________________________________________--->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour">
+                            <legend>Anamnesis</legend>
+                          </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse">
+                          <div class="accordion-body">
+                            <form action="guardar_anamnesis">
+                                <fieldset>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="procedencia">Procedencia:</label>
+                                            <textarea id="procedencia" name="procedencia" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="trasporte">Trasporte:</label>
+                                            <textarea id="trasporte" name="trasporte" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="Tiempo-Cautiverio">Tiempo En Cautiverio:</label>
+                                            <input type="text" id="Tiempo-Cautiverio" name="Tiempo-Cautiverio" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="habitat">Habitat:</label>
+                                        <select id="habitat" name="habitat" class="form-control" required>
+                                            <option value="zoologico">Zoologico</option>
+                                            <option value="canes">Canes</option>
+                                            <option value="equinos">Equinos</option>
+                                        </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="manejo">Manejo:</label>
+                                            <textarea id="manejo" name="manejo" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="alimentacion">Alimentación:</label>
+                                            <textarea id="alimentacion" name="alimentacion" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="causa-ingreso">Causa de Ingreso:</label>
+                                            <textarea id="causa-ingreso" name="causa-ingreso" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="Tratamientos-previos">Tratamientos Previos:</label>
+                                            <textarea id="Tratamientos-previos" name="Tratamientos-previos" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="observaciones-a">Observaciones:</label>
+                                            <textarea id="observaciones-a" name="observaciones-a" class="form-control" required></textarea>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-success">Guardar</button>
+                                        <button type="submit" class="btn btn-warning">Editar</button>
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <!--____________________________________________--->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefive" aria-expanded="false" aria-controls="panelsStayOpen-collapsefive">
+                            <legend>Examen Fisico</legend>
+                          </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapsefive" class="accordion-collapse collapse">
+                          <div class="accordion-body">
+                            <form action="guardar_examen_fisico">
+                                <fieldset>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md">
+                                            <label for="peso">Peso:</label>
+                                            <input type="text" id="peso" name="peso" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md">
+                                            <label for="t°">T°:</label>
+                                            <input type="text" id="t°" name="t°" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md">
+                                            <label for="fc">FC:</label>
+                                            <input type="text" id="fc" name="fc" class="form-control" required>
+                                        </div> 
+                                        <div class="form-group col-md">
+                                            <label for="fr">FR:</label>
+                                            <input type="text" id="fr" name="fr" class="form-control" required>
+                                        </div> 
+                                        <div class="form-group col-md">
+                                            <label for="ambiental">T° Ambiental:</label>
+                                            <input type="text" id="ambiental" name="ambiental" class="form-control" required>
+                                        </div> 
+                                    </div>
+                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="condicion-corporal">Condición Corporal:</label>
+                                            <input type="text" id="condicion-corporal" name="condicion-corporal" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="tllc">TLLC:</label>
+                                            <input type="text" id="tllc" name="tllc" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-5">
+                                            <label for="mucosas">Mucosas:</label>
+                                            <input type="text" id="mucosas" name="mucosas" class="form-control" required>
+                                        </div> 
+                                    </div>
+                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="comportamiento">Comportamiento:</label>
+                                            <input type="text" id="comportamiento" name="comportamiento" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="actitud">Actitud:</label>
+                                            <input type="text" id="actitud" name="actitud" class="form-control" required>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-success">Guardar</button>
+                                        <button type="submit" class="btn btn-warning">Editar</button>
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </div>
+                    
+                                </fieldset>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                         <!--____________________________________________--->
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsesix" aria-expanded="false" aria-controls="panelsStayOpen-collapsesix">
+                              <legend>Revisiones Generales</legend>
+                          </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapsesix" class="accordion-collapse collapse">
+                          <div class="accordion-body">
+                              <form action="guardar_datos_cuidador">
+                                  <fieldset>
+                                      
+                                      <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="estado-general-hidratacion">Estado General e Hidratación:</label>
+                                            <textarea id="estado-general-hidratacion" name="estado-general-hidratacion" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="piel-anexos">Piel y Anexos:</label>
+                                            <textarea id="piel-anexos" name="piel-anexos" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="ojos-oidos">Ojos y Oídos:</label>
+                                            <textarea id="ojos-oidos" name="ojos-oidos" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="modulo-linfatico">Nódulo Linfaticos:</label>
+                                            <textarea id="modulo-linfatico" name="modulo-linfatico" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="musculoesqueletico">Musculoesquelético:</label>
+                                            <textarea id="musculoesqueletico" name="musculoesqueletico" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="aparato-digestivo">Aparato Digestivo:</label>
+                                            <textarea id="aparato-digestivo" name="aparato-digestivo" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="aparato-espiratorio">Aparato Respiratorio:</label>
+                                            <textarea id="aparato-espiratorio" name="aparato-espiratorio" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="sistema-cardiovascular">Sistema Cardiovascular:</label>
+                                            <textarea id="sistema-cardiovascular" name="sistema-cardiovascular" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="aparato-genitourinario">Aparato genitourinario:</label>
+                                            <textarea id="aparato-genitourinario" name="aparato-genitourinario" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="sistema-nervioso">Sistema Nervioso:</label>
+                                            <textarea id="sistema-nervioso" name="sistema-nervioso" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="observaciones-rs">Observaciones:</label>
+                                            <textarea id="observaciones-rs" name="observaciones-rs" class="form-control" required></textarea>
+                                        </div>
+                                      </div>
+                      
+                                      <div class="form-group text-center">
+                                          <button type="submit" class="btn btn-success">Guardar</button>
+                                          <button type="submit" class="btn btn-warning">Editar</button>
+                                          <button type="submit" class="btn btn-danger">Eliminar</button>
+                                      </div>
+                      
+                                  </fieldset>
+                              </form>
+                          </div>
+                        </div>
+                      </div>
+                  </div>            
+            </div>
+
+            <footer class="py-3 text-white text-center" style="background-color: #5aa65d;">
+                <p>&copy; 2023 Margarita Zoo | Desarrollo en proceso</p>
+            </footer>
+        </main>
+        
+    </section>
+
+    <script src="JS-index.js"></script>
+    <!-- Agrega el enlace a jQuery y al archivo JavaScript de Bootstrap (necesarios para algunos componentes de Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-gn5384jlzQn6IX5O7bR5JS1KxiFqn/bw5+j5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-pzjw8f+ua9di5k75us5jl65ra9H1L7xnBykiJrW5B5N5UpjRv5Koy0FlevMi5D5G"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
