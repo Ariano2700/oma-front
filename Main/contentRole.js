@@ -122,15 +122,15 @@ async function mostrarDatosTabla() {
 
   const dni = await obtenerDNI();
   const data = await obtenerTodosDatos(dni);
-  if(data){
-    const {nombre, rol, username, email, apellido} = data;
+  if (data) {
+    const { nombre, rol, username, email, apellido } = data;
     /*let contenidoNombre = `${nombre}`;
     let contenidoApellido = `${apellido}`;
     let contenidoDni = `${dni}`;
     let contenidoEmail = `${email}`;
     let contenidoUsername = `${username}`;
     let contenidoRol = `${rol}`;*/
-    console.log("hola")
+    console.log("hola");
 
     responseNombre.innerHTML = `<p>${nombre}<p/>`;
     responseApellido.innerHTML = `<p>${apellido}<p/>`;
@@ -138,7 +138,6 @@ async function mostrarDatosTabla() {
     responseEmail.innerHTML = `<p>${email}<p/>`;
     responseUsername.innerHTML = `<p>${username}<p/>`;
     responseIDRol.innerHTML = `<p>${rol}<p/>`;
-
   }
 }
 async function obtenerTodosDatos(dni) {
@@ -164,14 +163,14 @@ async function obtenerTodosDatos(dni) {
       const nombre = data.nombre;
       const apellido = data.apellido;
       const email = data.email;
-      
+
       const roleName = await obtenerRol(rol);
       return {
         rol: roleName,
         username: username,
         apellido: apellido,
         email: email,
-        nombre: nombre
+        nombre: nombre,
       };
     }
   } catch (error) {
@@ -183,3 +182,40 @@ contentRole();
 mostrarDatosTabla();
 
 /////////////////////////////////////
+function obtenerDatosALIMENTOS() {
+  fetch("http://localhost:8080/api/alimento/all", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      if (data) {
+        data.forEach((alimento) => {
+          const { marca, fecha_compra, precio_unitario, volumen, stock } =
+            alimento;
+          const fechaCompraDate = new Date(fecha_compra);
+          const year = fechaCompraDate.getFullYear();
+          const month = String(fechaCompraDate.getMonth() + 1).padStart(2, "0"); // Agrega un 0 al mes si es necesario
+          const day = String(fechaCompraDate.getDate()).padStart(2, "0"); // Agrega un 0 al día si es necesario
+          const fechaCompraFormateada = `${year}-${month}-${day}`;
+
+          const respuestasAlimento = document.getElementById("tableAlimento");
+          const newRow = document.createElement("tr");
+
+          newRow.innerHTML = `
+            <td class="response" id="responseMarca">${marca}</td>
+            <td class="response" id="responseFechaCompra">${fechaCompraFormateada}</td>
+            <td class="response" id="responsePrecioUnitario">${precio_unitario}</td>
+            <td class="response" id="responseVolumen">${volumen}</td>
+            <td class="response" id="responseStock">${stock}</td>
+          `;
+          respuestasAlimento.appendChild(newRow);
+        });
+      }
+    });
+}
+document.addEventListener("DOMContentLoaded", function () {
+  obtenerDatosALIMENTOS();
+});

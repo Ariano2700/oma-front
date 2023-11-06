@@ -35,7 +35,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 <div class="info-usuario">
                     <div class="nombre-email">
                         <span id="usernameNav" class="nombre">
-                            <? php // echo $_SESSION['username']; ?>
                         </span>
                         <span id="emailNav" class="email">Aun no disponible</span>
                     </div>
@@ -167,7 +166,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 </tr>
             </table>
             <!--ALIMENTOS CON FORI-->
-            <table border="1">
+            <table border="1" id="tableAlimento">
                 <tr>
                     <th class="title" id="titleMarca">Marca</th>
                     <th class="title" id="titleFechaCompra">Fecha de Compra</th>

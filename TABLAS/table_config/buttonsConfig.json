@@ -1,0 +1,40 @@
+{
+    "dom": {
+      "button": {
+        "tag": "button",
+        "className": ""
+      }
+    },
+    "buttons": [
+      {
+        "extend": "copy",
+        "text": "<i class='bi bi-copy'></i>",
+        "titleAttr": "Copiar",
+        "className": "btn btn-primary"
+      },
+      {
+        "extend": "excel",
+        "text": "<i class=\"bi bi-file-earmark-spreadsheet\"></i>",
+        "titleAttr": "Exportar a Excel",
+        "className": "btn btn-success"
+      },
+      {
+        "extend": "pdf",
+        "text": "<i class=\"bi bi-file-earmark-pdf-fill\"></i>",
+        "titleAttr": "Exportar a PDF",
+        "className": "btn btn-danger"
+      },
+      {
+        "extend": "print",
+        "text": "<i class=\"bi bi-printer-fill\"></i>",
+        "titleAttr": "Imprimir",
+        "className": "btn btn-info"
+      },
+      {
+        "extend": "colvis",
+        "text": "Filtrar por columnas",
+        "className": "btn btn-secondary"
+      }
+    ]
+  }
+  
