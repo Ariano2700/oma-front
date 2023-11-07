@@ -10,6 +10,7 @@ function formatFechaCompra(fecha_compra) {
   const day = String(fechaCompraDate.getDate() + 1).padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
+
 function saveData() {
   /*Inputs*/
   const marca = document.getElementById("marca").value;
@@ -24,46 +25,65 @@ function saveData() {
     alertNoComplete(title, text);
   } else {
     const fechaFormat = formatFechaCompra(fechaCompra);
-    const dataToSend = {
-      marca: marca,
-      fecha_compra: fechaFormat,
-      precio_unitario: precioUnitario,
-      volumen: volumen,
-      stock: stock,
-    };
-    fetch(`http://localhost:8080/api/alimento/guardar/alimento`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dataToSend),
-    })
-      .then((response) => {
-        if (response.ok) {
-          alertSuccess();
-          return response.json();
-        } else {
-          const title = "Datos no mandados";
-          const text = "Error al subir los datos";
-          alertNoComplete(title, text);
-          throw new Error(text);
-        }
-      })
-      .then((data) => {
-        console.log("Marca: " + marca);
-        console.log("Fecha de Compra: " + fechaCompra);
-        console.log("Precio Unitario: " + precioUnitario);
-        console.log("Volumen: " + volumen);
-        console.log("Stock: " + stock);
-        console.log("datos subidos", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    Swal.fire({
+      title: "¿Estas seguro de los datos?",
+      text: "Los datos se subiran a la tabla seleccionada!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, subir datos",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const dataToSend = {
+          marca: marca,
+          fecha_compra: fechaFormat,
+          precio_unitario: precioUnitario,
+          volumen: volumen,
+          stock: stock,
+        };
+        fetch(`http://localhost:8080/api/alimento/guardar/alimento`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataToSend),
+        })
+          .then((response) => {
+            if (response.ok) {
+              //alertSuccess();
+              return response.json();
+            } else {
+              const title = "Datos no mandados";
+              const text = "Error al subir los datos";
+              alertNoComplete(title, text);
+              throw new Error(text);
+            }
+          })
+          .then((data) => {
+            console.log("datos subidos", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+        Swal.fire({
+          title: "¡Datos subidos!",
+          text: "Los datos han sido subidos satisfactoriamente.",
+          icon: "success",
+          confirmButtonText: "Aceptar",
+        }).then(result =>{
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        })
+      }
+    });
   }
 }
+
 saveTb.addEventListener("click", function (e) {
-  //e.preventDefault();
+  e.preventDefault();
+  //saveData();
   saveData();
 });
 
