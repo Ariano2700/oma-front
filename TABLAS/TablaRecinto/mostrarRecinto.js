@@ -18,7 +18,7 @@ async function ConfigTable() {
 
 async function obtenerDatosRecintos() {
   try {
-    const response = await fetch("http://localhost:8080/api/categoriaamenaza/all", {
+    const response = await fetch("http://localhost:8080/api/recinto/all", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -29,14 +29,15 @@ async function obtenerDatosRecintos() {
     const data = await response.json();
     if (data) {
       const promises = data.map(async (item) => [
-        item.idCategoriaAmenaza,
-        item.minagri,
-        item.cites,
-        item.uicn,
+        item.idRecinto,
+        item.nombre,
+        item.tipo,
+        item.estado,
+        item.ubicacion,
       ]);
-      const dataCatAme = await Promise.all(promises);
+      const dataRecintos = await Promise.all(promises);
 
-      return dataCatAme;
+      return dataRecintos;
     }
   } catch (error) {
     console.error("Error al obtener datos: " + error);
@@ -109,8 +110,9 @@ async function mostrarTable() {
       },
     },
     //lenguage a español mexico
-    language: languageConfig,
-    //ordenamiento de colunmas
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-MX.json",
+    }, //ordenamiento de colunmas
     order: [[0, "desc"]],
     //cantidad de datos que se mostraran
     lengthMenu: [10, 20, 30, 40, 50],
@@ -121,7 +123,7 @@ async function mostrarTable() {
       { responsivePriority: 2, targets: 3 },
 
       {
-        target: 3, //numero de colunma
+        target: 4, //numero de colunma
         visible: true, // no visible
         searchable: false, // no se busca
       },
@@ -129,10 +131,11 @@ async function mostrarTable() {
 
     //colunas
     columns: [
-      { title: 'ID CATEGORIA AMENAZA' },
-      { title: 'MINAGRI' },
-      { title: 'CITES' },
-      { title: 'UICN' },
+      { title: "ID recinto" },
+      { title: "NOMBRE" },
+      { title: "TIPO" },
+      { title: "ESTADO" },
+      { title: "UBICACION" },
     ],
 
     //data que se usa

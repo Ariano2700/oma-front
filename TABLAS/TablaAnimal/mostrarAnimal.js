@@ -160,8 +160,9 @@ async function mostrarTable() {
       },
     },
     //lenguage a español mexico
-    language: languageConfig,
-    //ordenamiento de colunmas
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-MX.json",
+    }, //ordenamiento de colunmas
     order: [[0, "desc"]],
     //cantidad de datos que se mostraran
     lengthMenu: [10, 20, 30, 40, 50],

@@ -2,6 +2,9 @@
 body {
     background-color: #f5f5f5;
     font-family: Arial, sans-serif;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
 }
 
 /* Estilos para el encabezado */
@@ -84,5 +87,3 @@ footer {
     width: 100%;
     box-sizing: border-box;
 }
-    
-

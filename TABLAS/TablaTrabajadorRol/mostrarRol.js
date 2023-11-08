@@ -90,7 +90,9 @@ async function mostrarTablaRoles() {
         },
       ],
     },
-    language: languageConfig,
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-MX.json",
+    },
     order: [[0, "desc"]],
     lengthMenu: [10, 20, 30, 40, 50],
     columns: [

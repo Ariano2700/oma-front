@@ -15,7 +15,7 @@ body {
     background-size: cover;
     background-position: center;
     background: aquamarine;
-    background-image: url('\paisaje-transformed.webp');
+    background-image: url('../Img/WEBMesa-de-trabajo-114x-100.webp');
     /* Corregido: Agrega / antes de img */
 }
 
