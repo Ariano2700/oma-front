@@ -37,36 +37,65 @@ function actualizarAlimento() {
     alert("ID Alimento, Precio Unitario, Volumen y Stock deben ser números.");
     return;
   }
-
-  const data = {
-    marca: marca,
-    fecha_compra: fechaCompra,
-    precio_unitario: precioUnitario,
-    volumen: volumen,
-    stock: stock,
-  };
-
-  // Realiza la solicitud PUT para actualizar el alimento
-  fetch(
-    `http://localhost:8080/api/alimento/actualizar/alimento/${idAlimento}`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  )
-    .then((response) => {
-      if (response.ok) {
-        alert("Alimento actualizado exitosamente.");
-        window.location.reload(); // Recargar la página
-        
-      } else {
-        alert("Error al actualizar el alimento.");
+  Swal.fire({
+    title: "¿Estas seguro de los datos?",
+    text: "Los datos se actualizaran a la tabla seleccionada!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, actualizar datos",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const data = {
+        marca: marca,
+        fecha_compra: fechaCompra,
+        precio_unitario: precioUnitario,
+        volumen: volumen,
+        stock: stock,
+      };
+    
+    fetch(
+      `http://localhost:8080/api/alimento/actualizar/alimento/${idAlimento}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       }
-    })
-    .catch((error) => {
-      console.error("Error al realizar la solicitud PUT:", error);
-    });
+    )
+      .then((response) => {
+        if (response.ok) {
+          Swal.fire({
+            title: "¡Datos actualizados!",
+            text: "Los datos han sido actualizados satisfactoriamente.",
+            icon: "success",
+            confirmButtonText: "Aceptar",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.reload();
+            }
+          });
+        } else {
+          const title = "Datos no mandados";
+          const text = "Error al actualizar los datos";
+          alertNoComplete(title, text);
+        }
+      })
+      .catch((error) => {
+        console.error("Error al realizar la solicitud PUT:", error);
+      });
+    }
+  });
+}
+
+function alertNoComplete(title, text) {
+  const alertNoComplete = Swal.fire({
+    title: title,
+    text: text,
+    icon: "error",
+    confirmButtonText: "Aceptar",
+  });
+  return alertNoComplete;
 }
