@@ -1,30 +1,76 @@
 //Eliminar Alimento
 const deleteTb = document.getElementById("deleteTb");
-deleteTb.addEventListener('click', function(e){
-    eliminarRecinto();
-})
+deleteTb.addEventListener("click", function (e) {
+  eliminarRecinto();
+});
 function eliminarRecinto() {
-    const idRecinto = document.getElementById("id_recinto").value;
+  const idRecinto = document.getElementById("id_recinto").value;
 
-    if (!idRecinto || isNaN(idRecinto)) {
-        alert("Ingresa un ID de alimento válido.");
-        return;
-    }
-
-    if (confirm("¿Seguro que deseas eliminar este recinto?")) {
-        fetch(`http://localhost:8080/api/recinto/eliminar/recinto/${idRecinto}`, {
+  if (!idRecinto || isNaN(idRecinto)) {
+    const title = "Falta ID";
+    const text =
+      "Se tiene que colocar un ID valido para realizar esta operacion";
+    alertNoComplete(title, text);
+  } else {
+    Swal.fire({
+      title: "¿Estas seguro?",
+      text: "!Los datos se borraran de la tabla seleccionada!",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonColor: "#d33",
+      confirmButtonColor: "#56B847",
+      confirmButtonText: "Si, borrar datos",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `http://localhost:8080/api/recinto/eliminar/recinto/${idRecinto}`,
+          {
             method: "DELETE",
-        })
-            .then((response) => {
-                if (response.ok) {
-                    alert("Recinto eliminado exitosamente.");
-                    window.location.reload(); // Recargar la página
-                } else {
-                    alert("Error al eliminar el recinto.");
+          }
+        )
+          .then((response) => {
+            if (response.ok) {
+              Swal.fire({
+                title: "¡Datos borrados!",
+                text: "Los datos han sido borrados satisfactoriamente.",
+                icon: "success",
+                confirmButtonText: "Aceptar",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
                 }
-            })
-            .catch((error) => {
-                console.error("Error al realizar la solicitud DELETE:", error);
-            });
-    }
+              });
+            } else {
+              Swal.fire({
+                title: "¡Oops!",
+                text: "No se han podido borrar los datos de la tabla.",
+                icon: "error",
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error al realizar la solicitud DELETE:", error);
+          });
+      }
+    });
+  }
+}
+function alertNoComplete(title, text) {
+  const alertNoComplete = Swal.fire({
+    title: title,
+    text: text,
+    icon: "error",
+    confirmButtonText: "Aceptar",
+  });
+  return alertNoComplete;
+}
+
+function alertSuccess() {
+  const alertSuccess = Swal.fire({
+    title: "¡Datos subidos!",
+    text: `Datos mandados correctamente`,
+    icon: "success",
+    confirmButtonText: "Aceptar",
+  });
+  return alertSuccess;
 }

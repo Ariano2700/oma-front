@@ -14,36 +14,59 @@ function saveData() {
       "Faltan campos en el formulario para completar la subida de datos";
     alertNoComplete(title, text);
   } else {
-    const dataToSend = {
-      minagri: minadriInput,
-      cites: citeslInput,
-      uicn: uicnInput,
-    };
-    fetch(`http://localhost:8080/api/categoriaamenaza/guardar/categoriaamenaza`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dataToSend),
-    })
-      .then((response) => {
-        if (response.ok) {
-          alertSuccess();
-          //window.location.reload();
-          return response.json();
-        } else {
-          const title = "Datos no mandados";
-          const text = "Error al subir los datos";
-          alertNoComplete(title, text);
-          throw new Error(text);
-        }
-      })
-      .then((data) => {
-        console.log("datos subidos", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    Swal.fire({
+      title: "¿Estas seguro de los datos?",
+      text: "Los datos se subiran a la tabla seleccionada!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, subir datos",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const dataToSend = {
+          minagri: minadriInput,
+          cites: citeslInput,
+          uicn: uicnInput,
+        };
+        fetch(
+          `http://localhost:8080/api/categoriaamenaza/guardar/categoriaamenaza`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dataToSend),
+          }
+        )
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              const title = "Datos no mandados";
+              const text = "Error al subir los datos";
+              alertNoComplete(title, text);
+              throw new Error(text);
+            }
+          })
+          .then((data) => {
+            Swal.fire({
+              title: "¡Datos subidos!",
+              text: "Los datos han sido subidos satisfactoriamente.",
+              icon: "success",
+              confirmButtonText: "Aceptar",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.reload();
+              }
+            });
+            console.log("datos subidos", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    });
   }
 }
 saveTb.addEventListener("click", function (e) {

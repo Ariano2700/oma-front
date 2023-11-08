@@ -21,29 +21,57 @@ function actualizarRol() {
     alert("El ID del rol debe ser un número.");
     return;
   }
-
-  const data = {
-    nombre: nombre,
-    descripcion: descripcion,
-  };
-
-  // Realiza la solicitud PUT para actualizar el rol
-  fetch(`http://localhost:8080/api/rol/actualizar/rol/${idRol}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => {
-      if (response.ok) {
-        alert("Rol actualizado exitosamente.");
-        window.location.reload(); // Recargar la página
-      } else {
-        alert("Error al actualizar el rol.");
-      }
-    })
-    .catch((error) => {
-      console.error("Error al realizar la solicitud PUT:", error);
-    });
+  Swal.fire({
+    title: "¿Estas seguro de los datos?",
+    text: "Los datos se actualizaran a la tabla seleccionada!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, actualizar datos",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const data = {
+        nombre: nombre,
+        descripcion: descripcion,
+      };
+      fetch(`http://localhost:8080/api/rol/actualizar/rol/${idRol}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => {
+          if (response.ok) {
+            Swal.fire({
+              title: "¡Datos actualizados!",
+              text: "Los datos han sido actualizados satisfactoriamente.",
+              icon: "success",
+              confirmButtonText: "Aceptar",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.reload();
+              }
+            });
+          } else {
+            const title = "Datos no mandados";
+            const text = "Error al actualizar los datos";
+            alertNoComplete(title, text);
+          }
+        })
+        .catch((error) => {
+          console.error("Error al realizar la solicitud PUT:", error);
+        });
+    }
+  });
+}
+function alertNoComplete(title, text) {
+  const alertNoComplete = Swal.fire({
+    title: title,
+    text: text,
+    icon: "error",
+    confirmButtonText: "Aceptar",
+  });
+  return alertNoComplete;
 }

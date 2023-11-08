@@ -51,7 +51,6 @@ function saveData() {
         })
           .then((response) => {
             if (response.ok) {
-              //alertSuccess();
               return response.json();
             } else {
               const title = "Datos no mandados";
@@ -61,21 +60,21 @@ function saveData() {
             }
           })
           .then((data) => {
+            Swal.fire({
+              title: "¡Datos subidos!",
+              text: "Los datos han sido subidos satisfactoriamente.",
+              icon: "success",
+              confirmButtonText: "Aceptar",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.reload();
+              }
+            });
             console.log("datos subidos", data);
           })
           .catch((error) => {
             console.error("Error:", error);
           });
-        Swal.fire({
-          title: "¡Datos subidos!",
-          text: "Los datos han sido subidos satisfactoriamente.",
-          icon: "success",
-          confirmButtonText: "Aceptar",
-        }).then(result =>{
-          if (result.isConfirmed) {
-            window.location.reload();
-          }
-        })
       }
     });
   }
