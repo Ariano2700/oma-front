@@ -2,6 +2,7 @@
 const editTb = document.getElementById("editTb");
 
 editTb.addEventListener("click", function (e) {
+  e.preventDefault();
   actualizarAnimal()
 });
 
@@ -55,6 +56,7 @@ function actualizarAnimal() {
     .then((response) => {
       if (response.ok) {
         alert("Alimento actualizado exitosamente.");
+        window.location.reload(); // Recargar la página
         
       } else {
         alert("Error al actualizar el alimento.");

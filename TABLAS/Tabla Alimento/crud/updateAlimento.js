@@ -2,7 +2,8 @@
 const editTb = document.getElementById("editTb");
 
 editTb.addEventListener("click", function (e) {
-    actualizarAlimento()
+  e.preventDefault();
+  actualizarAlimento();
 });
 
 function actualizarAlimento() {
@@ -42,7 +43,7 @@ function actualizarAlimento() {
     fecha_compra: fechaCompra,
     precio_unitario: precioUnitario,
     volumen: volumen,
-    stock: stock
+    stock: stock,
   };
 
   // Realiza la solicitud PUT para actualizar el alimento
@@ -59,6 +60,7 @@ function actualizarAlimento() {
     .then((response) => {
       if (response.ok) {
         alert("Alimento actualizado exitosamente.");
+        window.location.reload(); // Recargar la página
         
       } else {
         alert("Error al actualizar el alimento.");
