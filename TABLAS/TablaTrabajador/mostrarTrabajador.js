@@ -15,6 +15,37 @@ async function ConfigTable() {
     throw error;
   }
 }
+/*DATOS DE LOS ROLES */
+async function mostrarDatosRoles() {
+  try {
+    const response = await fetch("http://localhost:8080/api/rol/all", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al obtener datos de roles");
+    }
+    const data = await response.json();
+
+    if (data) {
+      const SelectRol = document.getElementById("SelectRol");
+      data.forEach((data) => {
+        const idTrabajadorRol = data.idTrabajadorRol;
+        const nombre = data.nombre;
+        const option = document.createElement("option");
+        option.value = idTrabajadorRol;
+        option.text = nombre;
+        SelectRol.appendChild(option);
+      });
+    }
+  } catch (error) {
+    console.error("Error al obtener datos de roles: " + error);
+  }
+}
+mostrarDatosRoles();
+/*DATOS DE LOS ROLES */
+
 async function obtenerRol(rol) {
   try {
     const response = await fetch(`http://localhost:8080/api/rol/rol/${rol}`, {

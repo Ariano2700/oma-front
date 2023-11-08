@@ -16,6 +16,7 @@ function saveTrabajador() {
   const correo = document.getElementById("correo").value;
   const password = document.getElementById("password").value;
   const username = document.getElementById("username").value;
+  const SelectRol = document.getElementById("SelectRol").value;
 
   if (
     !nombre ||
@@ -25,7 +26,8 @@ function saveTrabajador() {
     !direccion ||
     !correo ||
     !password ||
-    !username
+    !username ||
+    !SelectRol
   ) {
     const title = "Campos incompletos";
     const text =
@@ -51,6 +53,7 @@ function saveTrabajador() {
           email: correo,
           password: password,
           username: username,
+          idRol: SelectRol
         };
 
         fetch(`http://localhost:8080/api/trabajador/guardar/trabajador`, {
