@@ -1,6 +1,10 @@
+const editarButton = document.getElementById("editarButton");
+editarButton.addEventListener('click', () =>{
+  window.location.href = '../userProfileUpload/editProfile.html'
+})
 async function obtenerDNI() {
   try {
-    const response = await fetch(`../php/saveData.php`, {
+    const response = await fetch(`../../php/saveData.php`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -94,6 +98,8 @@ async function mostrarDatosTabla() {
   const emailSpan = document.getElementById("email");
   const nombreUsuario = document.getElementById("nombreUsuario");
   const avatarImage = document.getElementById("avatar-image");
+  const imgPortada = document.getElementById("portada-image");
+  const contenidoBiografia = document.getElementById("contenidoBiografia");
 
   const dni = await obtenerDNI();
   const data = await obtenerTodosDatos(dni);
@@ -107,32 +113,24 @@ async function mostrarDatosTabla() {
       telefono,
       direccion,
       fotoPerfil,
+      fotoPortada,
+      biografia
     } = data;
 
     //avatarImage.src = `data:image/jpg;base64,${fotoPerfil}`
-    console.log(`data:image/jpg;base64,${fotoPerfil}`)
-    if (fotoPerfil && fotoPerfil.length > 0) {
-      // Convertir la cadena base64 a Blob
-      const byteCharacters = atob(fotoPerfil);
-      const byteNumbers = new Array(byteCharacters.length);
-      for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-      }
-      const byteArray = new Uint8Array(byteNumbers);
-      const blob = new Blob([byteArray], { type: "image/jpeg" });
+    //console.log(`data:image/jpg;base64,${fotoPerfil}`)
+    avatarImage.src = showPicture(fotoPerfil);
+    imgPortada.src = showPicture(fotoPortada);
 
-      // Crear una URL de datos y establecerla como src de la imagen
-      const imageURL = URL.createObjectURL(blob);
-      avatarImage.src = imageURL;
-    }
+    nombreUsuario.innerText = `${nombre}, ${apellido}`;
+    usernameSpan.innerText = `${username}`;
+    rolSpan.innerText = `${rol}`;
+    telefonoSpan.innerText = `${telefono}`;
+    dniSpan.innerText = `${dni}`;
+    direccionSpan.innerText = `${direccion}`;
+    emailSpan.innerText = `${email}`;
+    (biografia === null) ? contenidoBiografia.innerText = 'Sin biografia' : contenidoBiografia.innerHTML = biografia
 
-    nombreUsuario.innerHTML = `<p>${nombre}, ${apellido}</p>`;
-    usernameSpan.innerHTML = `<p>${username}</p>`;
-    rolSpan.innerHTML = `<p>${rol}</p>`;
-    telefonoSpan.innerHTML = `<p>${telefono}</p>`;
-    dniSpan.innerHTML = `<p>${dni}</p>`;
-    direccionSpan.innerHTML = `<p>${direccion}</p>`;
-    emailSpan.innerHTML = `<p>${email}</p>`;
   }
 }
 async function obtenerTodosDatos(dni) {
@@ -161,6 +159,8 @@ async function obtenerTodosDatos(dni) {
       const telefono = data.telefono;
       const direccion = data.direccion;
       const fotoPerfil = data.fotoPerfil;
+      const fotoPortada = data.fotoPortada;
+      const biografiaTrabajador = data.biografia;
 
       const roleName = await obtenerRol(rol);
       return {
@@ -172,6 +172,8 @@ async function obtenerTodosDatos(dni) {
         telefono: telefono,
         direccion: direccion,
         fotoPerfil: fotoPerfil,
+        fotoPortada: fotoPortada,
+        biografia: biografiaTrabajador
       };
     }
   } catch (error) {
@@ -179,10 +181,30 @@ async function obtenerTodosDatos(dni) {
     console.error(error);
   }
 }
-mostrarDatosTabla();
+////////////////////////////////
+/*MOSTRAR FOTO (PORTADA O PERFIL)*/
+function showPicture(image) {
+  if (image && image.length > 0) {
+    // Convertir la cadena base64 a Blob
+    const byteCharacters = atob(image);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: "image/jpeg" });
+
+    // Crear una URL de datos y establecerla como src de la imagen
+    const imageURL = URL.createObjectURL(blob);
+    return imageURL;
+  } else {
+    console.log("img no pasada correctamente de byte a img");
+  }
+}
+////////////////////////////////
 
 ////////////////////////////////
-/* ESCOGER IMG DE PERFIL / PORTADA */
+/* ESCOGER IMG DE PERFIL / PORTADA*/
 async function chooseAvatarImage() {
   const avatarInput = document.getElementById("avatar-input");
   avatarInput.click();
@@ -192,19 +214,37 @@ async function chooseAvatarImage() {
     const selectedFile = avatarInput.files[0];
 
     if (selectedFile) {
-      const reader = new FileReader();
-      reader.onload = async function (e) {
-        avatarImage.src = e.target.result;
-
-        // Utilizar la función uploadAvatar que es asíncrona
-        await uploadAvatar(selectedFile);
-      };
-
-      reader.readAsDataURL(selectedFile);
+      Swal.fire({
+        title: "¿Estas seguro de cambiar la foto?",
+        text: "¡La foto se cambiara hasta que la vuelva a cambiar!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, cambiar foto",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            avatarImage.src = e.target.result;
+            Swal.fire({
+              title: "¡Datos actualizados!",
+              text: "Los datos han sido actualizados satisfactoriamente.",
+              icon: "success",
+              confirmButtonText: "Aceptar",
+            }).then(async(result) => {
+              if (result.isConfirmed) {
+                await uploadAvatar(selectedFile);
+              }
+            });
+          };
+    
+          reader.readAsDataURL(selectedFile);
+        }
+      });
     }
   });
 }
-
 async function uploadAvatar(file) {
   try {
     const dni = await obtenerDNI(); // Reemplaza con el valor correcto del trabajador
@@ -230,21 +270,50 @@ async function uploadAvatar(file) {
   }
 }
 ///////////////////////////////////////
-/*function choosePortadaImage() {
+async function choosePortadaImage() {
   const portadaInput = document.getElementById("portada-input");
   portadaInput.click();
 
-  portadaInput.addEventListener("change", function () {
+  portadaInput.addEventListener("change", async function () {
     const portadaImage = document.getElementById("portada-image");
     const selectedFile = portadaInput.files[0];
 
     if (selectedFile) {
       const reader = new FileReader();
-      reader.onload = function (e) {
+      reader.onload = async function (e) {
         portadaImage.src = e.target.result;
+
+        // Utilizar la función uploadAvatar que es asíncrona
+        await uploadPortada(selectedFile);
       };
 
       reader.readAsDataURL(selectedFile);
     }
   });
-}*/
+}
+async function uploadPortada(file) {
+  try {
+    const dni = await obtenerDNI(); // Reemplaza con el valor correcto del trabajador
+    const formData = new FormData();
+    formData.append("fotoPortada", file);
+
+    const response = await fetch(
+      `http://localhost:8080/api/trabajador/actualizar/foto/portada/${dni}`,
+      {
+        method: "PATCH",
+        // No establezcas Content-Type, dejar que FormData lo maneje automáticamente
+        // headers: {
+        //     "Content-Type": "multipart/form-data",
+        // },
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+    console.log("Imagen subida exitosamente", data);
+  } catch (error) {
+    console.error("Error al subir la imagen", error);
+  }
+}
+//////////////////////////////////////
+mostrarDatosTabla();
