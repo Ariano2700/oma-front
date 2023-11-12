@@ -1,3 +1,9 @@
+//REGRESAR AL PERFIL
+const returnProfile = document.getElementById("returnProfile");
+returnProfile.addEventListener("click", ()=>{
+  window.location.href = '../userProfile/userProfile.html'
+});
+////////////////////
 const radioButtons = document.querySelectorAll('input[type="radio"]');
 radioButtons.forEach((button) => {
   button.addEventListener("change", () => {

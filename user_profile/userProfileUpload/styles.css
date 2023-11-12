@@ -599,10 +599,19 @@ body {
   font-size: 40px;
   color: white;
 }
+.btnReturnProfile{
+  border: none;
+  background: transparent;
+  color: white;
+}
+.btnReturnProfile:hover{
+  color: rgb(90, 166, 93);
+}
 
 /* Estilo base para los elementos li */
 .datosGeneralesContainer,
-.cambiarContraseñaContainer {
+.cambiarContraseñaContainer,
+.returnProfile {
   display: flex;
   margin-bottom: 5px;
   width: 100%;
@@ -620,7 +629,8 @@ body {
 
 /* Estilo para las etiquetas label */
 .datosGeneralesContainer label,
-.cambiarContraseñaContainer label {
+.cambiarContraseñaContainer label,
+.returnProfile {
   border: 2px solid #ccc;
   border-radius: 10px;
   padding: 8px 12px;
@@ -631,7 +641,8 @@ body {
 
 /* Estilo para el hover de los li */
 .datosGeneralesContainer label:hover,
-.cambiarContraseñaContainer label:hover {
+.cambiarContraseñaContainer label:hover,
+.returnProfile:hover {
   background-color: #fff;
   color: rgb(90, 166, 93);
 }

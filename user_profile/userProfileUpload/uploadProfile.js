@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 confirmButtonText: "Aceptar",
               }).then((result) => {
                 if (result.isConfirmed) {
-                  window.location.reload();
+                  window.location.href = "../userProfile/userProfile.html";
                 }
               });
             } else {
@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(dni);
 
       if (actualPasswordInput === password) {
-        if ((newPasswordInput === RnewPasswordInput)) {
+        if (newPasswordInput === RnewPasswordInput) {
           Swal.fire({
             title: "¿Estas seguro de tu nueva contraseña?",
             text: "¡Tu contraseña se actualizara a la nueva, no la olvides!",
@@ -196,7 +196,8 @@ document.addEventListener("DOMContentLoaded", function () {
                       confirmButtonText: "Aceptar",
                     }).then((result) => {
                       if (result.isConfirmed) {
-                        window.location.reload();
+                        window.location.href =
+                          "../userProfile/userProfile.html";
                       }
                     });
                   } else {
