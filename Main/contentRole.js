@@ -52,12 +52,14 @@ async function obtenerDatos(dni) {
       const username = data.username;
       const apellido = data.apellido;
       const email = data.email;
+      const fotoPerfil = data.fotoPerfil;
       const roleName = await obtenerRol(rol);
       return {
         rol: roleName,
         username: username,
         apellido: apellido,
         email: email,
+        fotoPerfil: fotoPerfil,
       };
     }
   } catch (error) {
@@ -95,10 +97,11 @@ async function contentRole() {
   const container = document.getElementById("container");
   const usernameNav = document.getElementById("usernameNav");
   const emailNav = document.getElementById("emailNav");
+  const imgUser = document.getElementById("imgUser");
   const dni = await obtenerDNI();
   const data = await obtenerDatos(dni);
   if (data) {
-    const { rol, username, apellido, email } = data;
+    const { rol, username, apellido, email, fotoPerfil } = data;
     const emailNoArr = email.split("@");
     let content = `<h2>El rol es ${rol}</h2>
                    <h2>Bienvenido sr(a) ${apellido}`;
@@ -107,7 +110,8 @@ async function contentRole() {
     rolParametro === rol
       ? ((container.innerHTML = content),
         (usernameNav.innerText = usernameNavLeft),
-        (emailNav.innerText = emailNavLeft))
+        (emailNav.innerText = emailNavLeft),
+        (imgUser.src = showPicture(fotoPerfil)))
       : (window.location.href = `../Login/login.html`);
   }
 }
@@ -163,6 +167,7 @@ async function obtenerTodosDatos(dni) {
       const nombre = data.nombre;
       const apellido = data.apellido;
       const email = data.email;
+      const fotoPerfil = data.fotoPerfil;
 
       const roleName = await obtenerRol(rol);
       return {
@@ -171,6 +176,7 @@ async function obtenerTodosDatos(dni) {
         apellido: apellido,
         email: email,
         nombre: nombre,
+        fotoPerfil: fotoPerfil,
       };
     }
   } catch (error) {
@@ -216,6 +222,29 @@ function obtenerDatosALIMENTOS() {
       }
     });
 }
+
+////////////////////////////////
+/*MOSTRAR FOTO (PORTADA O PERFIL)*/
+function showPicture(image) {
+  if (image && image.length > 0) {
+    // Convertir la cadena base64 a Blob
+    const byteCharacters = atob(image);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: "image/jpeg" });
+
+    // Crear una URL de datos y establecerla como src de la imagen
+    const imageURL = URL.createObjectURL(blob);
+    return imageURL;
+  } else {
+    console.log("img no pasada correctamente de byte a img");
+  }
+}
+////////////////////////////////
+
 document.addEventListener("DOMContentLoaded", function () {
   obtenerDatosALIMENTOS();
 });

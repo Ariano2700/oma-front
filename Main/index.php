@@ -31,7 +31,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 <span>OMA CECILIA<br> MARGARITA</span>
             </div>
             <div class="usuario">
-                <img src="usuario.jpg" alt="">
+                <div class="imgUserContainer">
+                    <img id="imgUser"  src="usuario.jpg" alt="">
+                </div>
                 <div class="info-usuario">
                     <div class="nombre-email">
                         <span id="usernameNav" class="nombre">
@@ -62,11 +64,17 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     </a>
 
                     <ul class="initiative-options">
-                        <li><a href="../TABLAS/TablaEspecie/especietb.html"><ion-icon name="paper-plane-outline"></ion-icon>Especie</a></li>
-                        <li><a href="../TABLAS/TablaAnimal/animaltb.html"><ion-icon name="paper-plane-outline"></ion-icon>Animal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-                        <li><a href="../TABLAS/TablaCategoriaAmenaza/catametb.html"><ion-icon name="paper-plane-outline"></ion-icon>Amenaza</a></li>
-                        <li><a href="../TABLAS/TablaAlimento/alimentotb.html"><ion-icon name="paper-plane-outline"></ion-icon>Alimento</a></li>
-                        <li><a href="../TABLAS/TablaRecinto/recientotb.html"><ion-icon name="paper-plane-outline"></ion-icon>Recinto</a></li>
+                        <li><a href="../TABLAS/TablaEspecie/especietb.html"><ion-icon
+                                    name="paper-plane-outline"></ion-icon>Especie</a></li>
+                        <li><a href="../TABLAS/TablaAnimal/animaltb.html"><ion-icon
+                                    name="paper-plane-outline"></ion-icon>Animal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        </li>
+                        <li><a href="../TABLAS/TablaCategoriaAmenaza/catametb.html"><ion-icon
+                                    name="paper-plane-outline"></ion-icon>Amenaza</a></li>
+                        <li><a href="../TABLAS/TablaAlimento/alimentotb.html"><ion-icon
+                                    name="paper-plane-outline"></ion-icon>Alimento</a></li>
+                        <li><a href="../TABLAS/TablaRecinto/recientotb.html"><ion-icon
+                                    name="paper-plane-outline"></ion-icon>Recinto</a></li>
                     </ul>
                 </li>
                 <!-------nuevo desplegable--------->
