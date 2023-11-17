@@ -107,15 +107,16 @@ async function contentRole() {
                    <h2>Bienvenido sr(a) ${apellido}`;
     let usernameNavLeft = `${username}`;
     let emailNavLeft = `${emailNoArr[0]}`;
+
     rolParametro === rol
       ? ((container.innerHTML = content),
         (usernameNav.innerText = usernameNavLeft),
         (emailNav.innerText = emailNavLeft),
-        (imgUser.src = showPicture(fotoPerfil)))
+        (imgUser.src =
+          fotoPerfil !== null ? showPicture(fotoPerfil) : "usuario.jpg"))
       : (window.location.href = `../Login/login.html`);
   }
 }
-
 async function mostrarDatosTabla() {
   const responseNombre = document.getElementById("responseNombre");
   const responseApellido = document.getElementById("responseApellido");
@@ -222,7 +223,6 @@ function obtenerDatosALIMENTOS() {
       }
     });
 }
-
 ////////////////////////////////
 /*MOSTRAR FOTO (PORTADA O PERFIL)*/
 function showPicture(image) {
@@ -244,7 +244,11 @@ function showPicture(image) {
   }
 }
 ////////////////////////////////
+obtenerDatosALIMENTOS();
 
-document.addEventListener("DOMContentLoaded", function () {
-  obtenerDatosALIMENTOS();
+
+const menuIconAccess = document.getElementById("menu-icon-access");
+menuIconAccess.addEventListener("click", () => {
+  const dropdownMenu = document.querySelector(".dropdown-menu");
+  dropdownMenu.classList.toggle("active");
 });

@@ -385,3 +385,40 @@ main.min-main{
     }
     
 }
+
+
+/*/////////////////////////////////////////////////////*/
+/*FUNCIONALIDAD DE LOS 3 PUNTOS*/
+.menu-icon-access{
+    cursor: pointer;
+    z-index: 1000;
+}
+.dropdown-menu.active{
+    display: block;
+}
+main{
+    z-index: 5;
+}
+.barra-lateral{
+    z-index: 1001;
+}
+.dropdown-menu{
+    display: none;
+    list-style: none;
+    padding: 0;
+    position: absolute;
+    z-index: 1000;
+    /*background-color:rgb(90, 166, 93);*/
+    background-color: var(--color-menu-hover);
+    padding: 16px;
+}
+.dropdown-menu li{
+    margin-bottom: 10px;
+    text-align: center;
+}
+.dropdown-menu a{
+    color: var(--color-boton-texto);
+    text-decoration: none;
+}
+
+/*/////////////////////////////////////////////////////*/

@@ -15,6 +15,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal</title>
+    <script src="https://kit.fontawesome.com/84a62da86a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -32,7 +33,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             </div>
             <div class="usuario">
                 <div class="imgUserContainer">
-                    <img id="imgUser"  src="usuario.jpg" alt="">
+                    <img id="imgUser" src="usuario.jpg" alt="">
                 </div>
                 <div class="info-usuario">
                     <div class="nombre-email">
@@ -40,12 +41,19 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         </span>
                         <span id="emailNav" class="email">Aun no disponible</span>
                     </div>
-                    <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                    <div class="dropdown-threeP">
+                        <ion-icon name="ellipsis-vertical-outline" class="menu-icon-access"
+                            id="menu-icon-access"></ion-icon>
+                        <ul class="dropdown-menu">
+                            <li><a href="../user_profile/userProfile/userProfile.html"><i
+                                        class="fa-solid fa-id-badge"></i> Ver perfil</a></li>
+                            <li><a href="../php/sessionClose.php" id="logout"><i
+                                        class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div> <br><br>
         </div>
-
-
 
         <nav class="navegacion">
             <ul>
@@ -144,6 +152,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             </div>
         </div>
     </div>
+
 
     <main>
         <section class="mainContainer">
