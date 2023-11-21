@@ -8,13 +8,16 @@ async function mostrarLasIMG() {
   try {
     const imgMostrar = document.getElementById("imgMostrar");
     const SelectAnimal = document.getElementById("SelectAnimal").value;
+    const imgGET = await obtenerTodasLasImg(SelectAnimal);
     if (SelectAnimal === "noIMG-select") {
       const title = "No hay animal seleccionado";
       const text = "Debe escoger un animal para subir una imagen";
       alertNoComplete(title, text);
+    } else if (imgGET <= 1) {
+      const title = "No hay imagenes para animal seleccionado";
+      const text = "El animal seleccionado no tiene imagenes guardadas previamente";
+      alertNoComplete(title, text);
     } else {
-      const imgGET = await obtenerTodasLasImg(SelectAnimal);
-
       imgMostrar.innerHTML = "";
       /*const imgElement = document.createElement("img");
     imgElement.src = await showPicture(imgGET);
