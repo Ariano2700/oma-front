@@ -1,3 +1,7 @@
+const redirectIMG = document.getElementById("redirectIMG");
+redirectIMG.addEventListener('click', () =>{
+  window.location.href = 'showANDpost-img/showPostImg.html'
+})
 async function ConfigTable() {
   try {
     const languageResponse = await fetch("../table_config/languageConfig.json");

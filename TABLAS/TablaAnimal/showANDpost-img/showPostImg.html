@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mostrar img</title>
+    <link rel="stylesheet" href="imgStyle.css" />
+  </head>
+  <body>
+    <main>
+      <section class="postIMG">
+        <section class="imgPOST" id="imgIntento">
+          <div class="titleContainer">
+            <label for="SelectAnimalPOST" class="animalTitle"
+              ><span class="titleA">Animal a subir imagen:</span></label
+            >
+            <select
+              id="SelectAnimalPOST"
+              name="SelectAnimalPOST"
+              class="form-control"
+            >
+              <option selected disabled value="noIMG-select">Escoger animal</option>
+            </select>
+          </div>
+          <div class="containerInputBtn">
+            <input
+              type="file"
+              name="Seleccione archivo"
+              id="imgAnimal"
+              class="inputAnimalPOST"
+            />
+            <button class="btn draw-border" id="showMe">Subir imagen</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="containerShowImg">
+        <section class="mostrarImagenes">
+          <div class="titleContainer">
+            <label for="SelectAnimal" class="animalTitle"
+              ><span class="titleA">Mostrar imagen del animal</span></label
+            >
+            <select id="SelectAnimal" name="SelectAnimal" class="form-control">
+              <option selected disabled value="noIMG-select">Escoger animal</option>
+            </select>
+          </div>
+          <div class="containerBTN">
+            <button class="btn draw-border" id="showIMGS">
+              Mostrar imagen
+            </button>
+          </div>
+        </section>
+
+        <section class="imgMostrar" id="imgMostrar"></section>
+      </section>
+    </main>
+    <script src="showimg.js"></script>
+    <script src="postImg.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
