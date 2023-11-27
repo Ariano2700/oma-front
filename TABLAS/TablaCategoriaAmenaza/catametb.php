@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trabajador</title>
+  <title>TABLA CATEGORIA AMENAZA</title>
 
   <!--enlace a css -->
   <link rel="stylesheet" href="style.css">
@@ -24,9 +24,11 @@
 
   <!--iconos bootstrap-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <?php require_once "../../vista_barra/css_barra.php"?>
 </head>
 
 <body>
+<?php require_once "../../vista_barra/inicio_barra.php"?>
   <!-- Encabezado de la página -->
   <section class="Dashboard_Text">
     <main>
@@ -42,54 +44,28 @@
 
       <div class="container mt-4">
         <!-- Título de la página -->
-        <h1 class="text-center">Trabajador</h1>
+        <h1 class="text-center">CATEGORIA AMENAZA</h1>
         <!-- Formulario para guardar datos -->
-        <form id="formTrabajador" class="form_trabajador">
+        <form id="formcatame" class="form_catame">
           <fieldset>
             <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="id_trabajador">Id_Trabajador</label>
-                <input type="number" id="id_trabajador" name="id_trabajador" class="form-control">
+              <div class="form-group col-md-3">
+                <label for="id_Amenaza">Id Amenaza</label>
+                <input type="text" id="id_Amenaza" name="id_Amenaza" class="form-control" required>
               </div>
-              <div class="form-group col-md-4">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" class="form-control" required>
+              <div class="form-group col-md-3">
+                <label for="MINADRI">MINADRI:</label>
+                <input type="text" id="MINADRI" name="MINADRI" class="form-control" required>
               </div>
-              <div class="form-group col-md-4">
-                <label for="apellidos">Apellidos:</label>
-                <input type="text" id="apellidos" name="apellidos" class="form-control" required>
+              <div class="form-group col-md-3">
+                <label for="CITESL">CITESL:</label>
+                <input type="text" id="CITESL" name="CITESL" class="form-control" required>
               </div>
-              <div class="form-group col-md-4">
-                <label for="dni">DNI:</label>
-                <input type="number" id="dni" name="dni" class="form-control" required maxlength="8" minlength="8">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="telefono">Telefono:</label>
-                <input type="number" id="telefono" name="telefono" class="form-control" required>
-              </div>
-              <div class="form-group col-md-4">
-                <label for="direccion">Direccion:</label>
-                <input type="text" id="direccion" name="direccion" class="form-control" required>
-              </div>
-              <div class="form-group col-md-4">
-                <label for="correo">Email:</label>
-                <input type="email" id="correo" name="correo" class="form-control" required>
-              </div>
-              <div class="form-group col-md-4">
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" class="form-control" required>
-              </div>
-              <div class="form-group col-md-4">
-                <label for="username">Usuario:</label>
-                <input type="text" id="username" name="username" class="form-control" required>
+              <div class="form-group col-md-3">
+                <label for="UICN">UICN:</label>
+                <input type="text" id="UICN" name="UICN" class="form-control" required>
               </div>
             </div>
-            <div class="form-group col-md-4">
-              <label for="SelectRol">Rol:</label>
-              <select id="SelectRol" name="SelectRol" class="form-control" required>
-              </select>
-            </div>
-        
             <div class="text-center">
               <button type="submit" class="btn btn-success" id="saveTb">Guardar</button>
               <button type="submit" class="btn btn-warning" id="editTb">Editar</button>
@@ -114,7 +90,7 @@
       </div>
     </main>
   </section>
-
+  <?php require_once "../../vista_barra/fin_barra.php"?>
   <!--script jquery, datatable y bootstrap-->
   <script src="https://code.jquery.com/jquery-3.7.0.js" type="text/JavaScript"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" type="text/JavaScript"></script>
@@ -141,12 +117,12 @@
 
   <!-- enlace de script-->
   <!--CRUD-->
-  <script src="crud/deleteTrabajador.js"></script>
-  <script src="crud/saveTrabajador.js"></script>
-  <script src="crud/searchTrabajador.js"></script>
-  <script src="crud/updateTrabajador.js"></script>
+  <script src="crud/deleteCatAme.js"></script>
+  <script src="crud/saveCatAme.js"></script>
+  <script src="crud/searchCatAme.js"></script>
+  <script src="crud/updateCatAme.js"></script>
   <!--CRUD-->
-  <script src="mostrarTrabajador.js"></script>
+  <script src="mostrarCatAme.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 

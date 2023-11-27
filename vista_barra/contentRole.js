@@ -6,7 +6,7 @@ const rolParametro = role();
 
 async function obtenerDNI() {
   try {
-    const response = await fetch(`../php/saveData.php`, {
+    const response = await fetch(`../../php/saveData.php`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -94,7 +94,7 @@ async function obtenerRol(rol) {
   }
 }
 async function contentRole() {
-  const container = document.getElementById("container");
+  //const container = document.getElementById("container");
   const usernameNav = document.getElementById("usernameNav");
   const emailNav = document.getElementById("emailNav");
   const imgUser = document.getElementById("imgUser");
@@ -109,12 +109,12 @@ async function contentRole() {
     let emailNavLeft = `${emailNoArr[0]}`;
 
     rolParametro === rol
-      ? ((container.innerHTML = content),
+      ? (//(container.innerHTML = content),
         (usernameNav.innerText = usernameNavLeft),
         (emailNav.innerText = emailNavLeft),
         (imgUser.src =
           fotoPerfil !== null ? showPicture(fotoPerfil) : "usuario.jpg"))
-      : (window.location.href = `../Login/login.html`);
+      : (window.location.href = `../../Login/login.html`);
   }
 }
 async function mostrarDatosTabla() {

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trabajador Roll</title>
+  <title>Recinto</title>
 
   <!--enlace a css -->
   <link rel="stylesheet" href="style.css">
@@ -24,9 +24,11 @@
 
   <!--iconos bootstrap-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <?php require_once "../../vista_barra/css_barra.php"?>
 </head>
 
 <body>
+  <?php require_once "../../vista_barra/inicio_barra.php"?>
   <!-- Encabezado de la página -->
   <section class="Dashboard_Text">
     <main>
@@ -34,7 +36,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <br><img src="../Img/LogoOMA.png" alt="" class="img-fluid">
+                    <br><img src="../../Img/LogoOMA.png" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -42,24 +44,30 @@
 
       <div class="container mt-4">
         <!-- Título de la página -->
-        <h1 class="text-center">Trabajador Rol</h1>
+        <h1 class="text-center">Recinto</h1>
         <!-- Formulario para guardar datos -->
-        <form id="formTrabajadorRol" class="form_trabajadorRol">
+        <form id="formRecinto" class="form_recinto">
           <fieldset>
             <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="id_roll">Id_rol</label>
-                <input type="number" id="id_roll" name="id_roll" class="form-control">
+              <div class="form-group col-md-4">
+                <label for="id_recinto">Id_Recinto</label>
+                <input type="number" id="id_recinto" name="id_recinto" class="form-control" required>
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-4">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" class="form-control" required>
               </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-12">
-                <label for="descripcion">Descripción:</label>
-                <input type="text" id="descripcion" name="descripcion" class="form-control" required>
+              <div class="form-group col-md-4">
+                <label for="tipo">Tipo:</label>
+                <input type="text" id="tipo" name="" class="form-control" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" name="estado" class="form-control" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="ubicacion">Ubicacion:</label>
+                <input type="text" id="ubicacion" name="ubicacion" class="form-control" required>
               </div>
             </div>
             <div class="text-center">
@@ -86,7 +94,7 @@
       </div>
     </main>
   </section>
-
+  <?php require_once "../../vista_barra/fin_barra.php"?>
   <!--script jquery, datatable y bootstrap-->
   <script src="https://code.jquery.com/jquery-3.7.0.js" type="text/JavaScript"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" type="text/JavaScript"></script>
@@ -113,12 +121,12 @@
 
   <!-- enlace de script-->
   <!--CRUD-->
-  <script src="crud/deleteRol.js"></script>
-  <script src="crud/saveRol.js"></script>
-  <script src="crud/searchRol.js"></script>
-  <script src="crud/updateRol.js"></script>
+  <script src="crud/deleteRecinto.js"></script>
+  <script src="crud/saveRecinto.js"></script>
+  <script src="crud/searchRecinto.js"></script>
+  <script src="crud/updateRecinto.js"></script>
   <!--CRUD-->
-  <script src="mostrarRol.js"></script>
+  <script src="mostrarRecinto.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 

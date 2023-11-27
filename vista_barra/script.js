@@ -25,6 +25,10 @@ menu.addEventListener("click",()=>{
             span.classList.add("oculto");
         })
     }
+    // Nueva línea para ajustar el contenido del 'main' cuando se activa el menú
+    if (window.innerWidth <= 600) { // Ajusta aquí el ancho máximo para el modo responsivo
+      main.style.marginLeft = barraLateral.classList.contains('max-barra-lateral') ? '250px' : '80px';
+  }
 });
 
 palanca.addEventListener("click",()=>{

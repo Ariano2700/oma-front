@@ -85,10 +85,10 @@ document.addEventListener("DOMContentLoaded", function () {
         await iniciarSesionEnPHP(username, dni);
         await alertSuccess(roleName);
         setTimeout(() => {
-          window.location.href = `../Main/index.php?role=${roleName}`;
+          window.location.href = `../Main/indexView/index.php?role=${roleName}`;
         }, 1500);
       } else {
-        const title = "¡Contraseña incorrecta!";
+        const title = "¡Contraseña incorreicta!";
         const text = "Verifique si la contraseña es la correcta";
         alertNoComplete(title, text);
       }
