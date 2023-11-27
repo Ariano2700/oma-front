@@ -31,7 +31,12 @@ async function imgToSubmit() {
   const selectedFile = inputImgAnimal.files[0];
   const SelectAnimal = document.getElementById("SelectAnimalPOST").value;
 
-  if (SelectAnimal === "noIMG-select") {
+  if (selectedFile === undefined) {
+    const title = "No hay imagen seleccionada";
+    const text =
+      "Se debe tener un archivo de imagen a subir para realizar la siguiente acción";
+    alertNoComplete(title, text);
+  } else if (SelectAnimal === "noIMG-select") {
     const title = "No hay animal seleccionado";
     const text = "Debe escoger un animal para subir una imagen";
     alertNoComplete(title, text);
@@ -72,11 +77,6 @@ async function submmitIMG(file, idAnimal) {
     formData.append("imgAnimal", file);
     formData.append("idAnimal", idAnimal);
 
-    const dataToSend = {
-      idAnimal: idAnimal,
-      imgAnimal: formData,
-    };
-
     const response = await fetch(
       `http://localhost:8080/api/img/animal/guardar/imagen`,
       {
@@ -109,14 +109,16 @@ async function mostrarDatosAnimales() {
 
     if (data) {
       const SelectAnimal = document.getElementById("SelectAnimalPOST");
-      data.forEach((data) => {
-        const idAnimal = data.idAnimal;
-        const nombreAnimal = data.nombreAnimal;
-        const option = document.createElement("option");
-        option.value = idAnimal;
-        option.text = nombreAnimal;
-        SelectAnimal.appendChild(option);
-      });
+      if (SelectAnimal) {
+        data.forEach((data) => {
+          const idAnimal = data.idAnimal;
+          const nombreAnimal = data.nombreAnimal;
+          const option = document.createElement("option");
+          option.value = idAnimal;
+          option.text = nombreAnimal;
+          SelectAnimal.appendChild(option);
+        });
+      }
     }
   } catch (error) {
     console.error("Error al obtener datos de roles: " + error);

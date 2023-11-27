@@ -15,7 +15,8 @@ async function mostrarLasIMG() {
       alertNoComplete(title, text);
     } else if (imgGET <= 1) {
       const title = "No hay imagenes para animal seleccionado";
-      const text = "El animal seleccionado no tiene imagenes guardadas previamente";
+      const text =
+        "El animal seleccionado no tiene imagenes guardadas previamente";
       alertNoComplete(title, text);
     } else {
       imgMostrar.innerHTML = "";
@@ -84,14 +85,16 @@ async function mostrarDatosAnimales() {
 
     if (data) {
       const SelectAnimal = document.getElementById("SelectAnimal");
-      data.forEach((data) => {
-        const idAnimal = data.idAnimal;
-        const nombreAnimal = data.nombreAnimal;
-        const option = document.createElement("option");
-        option.value = idAnimal;
-        option.text = nombreAnimal;
-        SelectAnimal.appendChild(option);
-      });
+      if (SelectAnimal) {
+        data.forEach((data) => {
+          const idAnimal = data.idAnimal;
+          const nombreAnimal = data.nombreAnimal;
+          const option = document.createElement("option");
+          option.value = idAnimal;
+          option.text = nombreAnimal;
+          SelectAnimal.appendChild(option);
+        });
+      }
     }
   } catch (error) {
     console.error("Error al obtener datos de roles: " + error);

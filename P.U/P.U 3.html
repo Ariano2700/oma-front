@@ -1,0 +1,72 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <script src="sub.js"></script>
+    <script src="https://kit.fontawesome.com/84a62da86a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section class="perfil-animal">
+        <div class="contenedor-animal">
+            <div class="portada-animal">
+                <div>
+                    <img alt="" id="portada-image-animal">
+                    <input type="file" id="portada-input-animal" accept="image/*" style="display: none">
+
+                </div>
+                <div class="sombra"></div>
+                <div class="avatar-animal">
+                    <img src="" alt="img" id="avatar-image-animal">
+                    <a href="#" class="cambiar-foto-animal" onclick="document.getElementById('avatar-input-animal').click();">
+                        <i class="fas fa-camera"></i>
+                        <span>Cambiar foto</span>
+                    </a>
+                    <input type="file" id="avatar-input-animal" accept="image/*" style="display: none" onchange="cambiarFoto(this)">
+                </div>
+                <div class="datos-animal" id="datos-animal" contenteditable="false">
+                    <h4 class="titulo-animal" id="nombre-animal">Nombre Animal</h4>
+                    <p class="bio-animal" id="bio-animal">Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+                    
+                </div>
+                <div class="opciones-animal" onclick="choosePortadaImageA()">
+                    <button type="">Cambiar portada</button>
+                </div>
+            </div>
+            
+            <div class="perfil-animal-footer" id="perfil-animal-footer">
+                <ul class="list-datos" contenteditable="false">
+                    <li><i class="fa-solid fa-shield-cat"></i> Animal: <span class="editable">No definido</span></li>
+                    <li><i class="fa-solid fa-baby-carriage"></i> Edad: <span class="editable">No definido</span></li>
+                    <li><i class="fa-solid fa-venus-mars"></i> Sexo: <span class="editable">No definido</span></li>
+                    <li><i class="fa-solid fa-paw"></i> Tipo: <span class="editable">No definido</span></li>
+             </ul>
+                <ul class="lista-datos" contenteditable="false">
+                    <li><i class="fa-solid fa-icons"></i> Estado: <span class="editable">No definido</span></li>
+                    <li><i class="fa-regular fa-window-maximize"></i> Id Especie: <span class="editable">No definido</span></li>
+                    <li><i class="fa-solid fa-house"></i> Id Recinto: <span class="editable">No definido</span></li>
+                </ul>
+            </div>
+            <div class="buttons">
+                <button id="editar-btn" class="editar-btn"><i class="fas fa-edit"></i> Editar</button>
+                <button id="guardar-btn" style="display: none;" class="guardar-btn"><i class="fas fa-save"></i> Guardar</button>
+                </button>
+            </div>
+            <div id="myModal" class="modal">
+                <span class="close" onclick="cerrarModal()">&times;</span>
+                <img class="modal-content" id="imgModal">
+                <button id="btnEliminarModal" class="button-modal button-eliminar" onclick="eliminarImagen()">Eliminar</button>
+                <button id="btnSalirModal" class="button-modal button-salir" onclick="salirModal()">Salir</button>
+            </div>
+           
+            <button type="button" class="subir-imagen" onclick="subirImagen()">
+                <i class="far fa-image"></i> Subir imagen
+            </button>
+        </div>
+    </section>
+    
+</body>
+
+</html>

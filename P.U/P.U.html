@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <!-- Head content with meta, scripts, and styles -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/84a62da86a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <section class="perfil-usuario">
+        <div class="contenedor-perfil">
+            <div class="portada-perfil">
+                <img alt="" id="portada-image">
+                <input type="file" id="portada-input" accept="image/*" style="display: none">
+                <div class="sombra"></div>
+                <div class="avatar-perfil">
+                <img src="" alt="" id="avatar-image">
+                <input type="file" id="avatar-input" accept="image/*" style="display: none">
+                <a href="#" class="cambiar-foto" onclick="chooseAvatarImage()">
+                     <i class="fas fa-camera"></i>
+                     <span>Cambiar foto</span>
+                </a>
+                </div>
+                <div class="datos-perfil" id="contenidob" contenteditable="false">
+                    <h4 class="titulo-usuario">NOMBRE DE USUARIO</h4>
+                    <p class="bio-usuario">Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+                </div>
+            </div>
+            <button type="button" class="boton-portadab" onclick="choosePortadaImage()">
+                <i class="far fa-image"></i> Cambiar portada
+            </button>
+        </div>
+    </section>
+    <div class="buttons">
+        <button id="editar-btn" class="editar-btn"><i class="fas fa-edit"></i> Editar</button>
+        <button id="guardar-btn" style="display: none;" class="guardar-btn"><i class="fas fa-save"></i> Guardar</button>
+        <button type="button" class="boton-imprimir-custom" onclick="window.print()">
+            <i class="fas fa-print"></i> Imprimir
+        </button>
+    </div>
+    <script src="img.js"></script>
+</body>
+</html>

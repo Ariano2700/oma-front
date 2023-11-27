@@ -5,9 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mostrar img</title>
     <link rel="stylesheet" href="imgStyle.css" />
+    <link rel="stylesheet" href="lateralNav.css" />
+    <script
+      src="https://kit.fontawesome.com/84a62da86a.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <main>
+    <section class="navLatera">
+      <div class="menu">
+        <ion-icon name="menu-outline"></ion-icon>
+        <ion-icon name="close-outline"></ion-icon>
+      </div>
+
+      <div class="barra-lateral">
+        <div>
+          <div class="nombre-pagina">
+            <ion-icon id="cloud" name="leaf-outline"></ion-icon>
+            <span
+              >OMA CECILIA<br />
+              MARGARITA</span
+            >
+          </div>
+          <div class="usuario">
+            <div class="iconUser">
+              <i class="fa-solid fa-circle-user"></i>
+            </div>
+            <div class="info-usuario">
+              <div class="nombre-email">
+                <span id="usernameNav" class="nombre">No disponible</span>
+                <span id="emailNav" class="email">Aun no disponible</span>
+              </div>
+              <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+            </div>
+          </div>
+          <br /><br />
+        </div>
+
+        <nav class="navegacion">
+          <ul>
+            <li class="datosGeneralesContainer">
+              <input
+                type="radio"
+                name="datosGenerales"
+                id="datosGenerales"
+                checked
+              />
+              <label for="datosGenerales" for="datosGenerales"
+                ><span
+                  ><i class="fa-solid fa-file-import"></i> Subir imagenes</span
+                ></label
+              >
+            </li>
+            <li class="cambiarContraseñaContainer">
+              <input
+                type="radio"
+                name="cambiarContraseña"
+                id="cambiarContraseña"
+              />
+              <label for="cambiarContraseña" for="cambiarContraseña"
+                ><span
+                  ><i class="fa-solid fa-image"></i> Mostrar imagenes</span
+                ></label
+              >
+            </li>
+            <li class="returnProfile">
+              <button class="btnReturnProfile" id="returnProfile">
+                <span><i class="fa-solid fa-rotate-left"></i> Regresar</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+    <main id="mainContainerALL">
       <section class="postIMG">
         <section class="imgPOST" id="imgIntento">
           <div class="titleContainer">
@@ -19,7 +90,9 @@
               name="SelectAnimalPOST"
               class="form-control"
             >
-              <option selected disabled value="noIMG-select">Escoger animal</option>
+              <option selected disabled value="noIMG-select">
+                Escoger animal
+              </option>
             </select>
           </div>
           <div class="containerInputBtn">
@@ -41,7 +114,9 @@
               ><span class="titleA">Mostrar imagen del animal</span></label
             >
             <select id="SelectAnimal" name="SelectAnimal" class="form-control">
-              <option selected disabled value="noIMG-select">Escoger animal</option>
+              <option selected disabled value="noIMG-select">
+                Escoger animal
+              </option>
             </select>
           </div>
           <div class="containerBTN">
@@ -56,6 +131,11 @@
     </main>
     <script src="showimg.js"></script>
     <script src="postImg.js"></script>
+    <script src="dinamicContent.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
   </body>
 </html>
