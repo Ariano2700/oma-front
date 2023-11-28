@@ -22,6 +22,9 @@ function formatFechaCompra(fecha_compra) {
   const day = String(fechaCompraDate.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
+function formatMoney(precio){
+  return `S/ ${precio}`
+}
 async function obtenerDatosAlimentos() {
   try {
     const response = await fetch("http://localhost:8080/api/alimento/all", {
@@ -39,7 +42,7 @@ async function obtenerDatosAlimentos() {
         item.idAlimento,
         item.marca,
         formatFechaCompra(item.fecha_compra),
-        item.precio_unitario,
+        formatMoney(item.precio_unitario),
         item.volumen,
         item.stock,
       ]);

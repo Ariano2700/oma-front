@@ -27,7 +27,7 @@ redirectAnimalPerfil.addEventListener("click", () => {
       "Se tiene que colocar un ID valido para realizar esta operacion";
     alertNoComplete(title, text);
   } else {
-    window.location.href = `../../animal_profile/animalProfile.html?role=${rolInParam}&animalID=${idAnimal}`;
+    window.location.href = `../../animal_profile/animalProfile/animalProfile.php?role=${rolInParam}&animalID=${idAnimal}`;
   }
 });
 /*Mostrar total de animales */

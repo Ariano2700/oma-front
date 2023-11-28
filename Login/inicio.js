@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
       throw error;
     }
   }
-
   async function iniciarSesion(username, password) {
     try {
       const response = await fetch(
@@ -84,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //console.log(roleName);
         await iniciarSesionEnPHP(username, dni);
         await alertSuccess(roleName);
+        localStorage.setItem("rolSession", roleName);
         setTimeout(() => {
           window.location.href = `../Main/indexView/index.php?role=${roleName}`;
         }, 1500);
@@ -97,7 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error(error);
     }
   }
-
   async function iniciarSesionEnPHP(username, dni) {
     try {
       const response = await fetch("../php/sesionStart.php", {
@@ -128,7 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error(error);
     }
   }
-
   async function guardarDatos(dni) {
     try {
       const response = await fetch(`../php/saveData.php`, {

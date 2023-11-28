@@ -1,3 +1,13 @@
+<?php
+include("../../php/sesionStart.php");
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    // El usuario no está autenticado, redirigir solo si no está en la página de inicio de sesión
+    if ($_SERVER['REQUEST_URI'] != '') {
+        header('Location: ../../Login/login.html');
+        exit();
+    }
+}
+?>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -136,5 +146,6 @@
     </main>
     <script src="showContent.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../vista_barra/urlVerificationParam.js"></script>
   </body>
 </html>
