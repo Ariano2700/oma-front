@@ -11,22 +11,6 @@
 
   <body>
     <main>
-      <section class="animalToShow">
-        <div class="titleContainer">
-          <label for="SelectAnimal" class="animalTitle"
-            ><span class="titleA">Seleccionar animal:</span></label
-          >
-          <select id="SelectAnimal" name="SelectAnimal" class="form-control">
-            <option selected disabled value="noIMG-select">
-              Escoger animal
-            </option>
-          </select>
-        </div>
-        <div class="containerBTN">
-          <button class="btn draw-border" id="showIMGS">Mostrar imagen</button>
-        </div>
-      </section>
-
       <section class="perfil-animal">
         <div class="contenedor-animal">
           <div class="portada-animal">
@@ -41,7 +25,7 @@
             </div>
             <div class="sombra"></div>
             <div class="avatar-animal">
-              <img src="" alt="img" id="avatar-image-animal" />
+              <img src="" alt="img" id="animalFotoPerfil" />
               <a
                 href="#"
                 class="cambiar-foto-animal"
@@ -71,10 +55,10 @@
 
           <div class="perfil-animal-footer" id="perfil-animal-footer">
             <ul class="list-datos" contenteditable="false">
-              <li>
+              <!--<li>
                 <i class="fa-solid fa-shield-cat"></i> <b>Animal:</b>
                 <span id="animalTextID" class="editable">No definido</span>
-              </li>
+              </li>-->
               <li>
                 <i class="fa-solid fa-baby-carriage"></i> <b>Edad:</b>
                 <span id="edadTextID" class="editable">No definido</span>
@@ -105,7 +89,10 @@
               </li>
             </ul>
           </div>
-          <div class="buttons">
+
+          <section class="imgMostrar" id="imgMostrar"></section>
+
+          <!--<div class="buttons">
             <button id="editar-btn" class="editar-btn">
               <i class="fas fa-edit"></i> Editar
             </button>
@@ -130,14 +117,24 @@
             >
               Salir
             </button>
-          </div>
+          </div>-->
 
+          <div class="buttons">
+            <button id="editar-btn" class="editar-btn">
+              <i class="fas fa-edit"></i> Editar
+            </button>
+          </div>
+          
           <button type="button" class="subir-imagen" id="subirImagenes">
-            <i class="far fa-image"></i> Subir imagenes
+            <i class="fa-solid fa-camera-retro"></i> Subir imagenes
+          </button>
+          <button type="button" class="subir-imagen" id="mostrarImgsAnimal">
+            <i class="fa-regular fa-images"></i> Mostrar imagenes
           </button>
         </div>
       </section>
     </main>
     <script src="showContent.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

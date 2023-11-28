@@ -39,7 +39,7 @@
         <nav class="navegacion">
             <ul>
                 <li>
-                    <a id="inbox" href="#">
+                    <a id="inbox" href="javascript:goIndex()">
                         <ion-icon name="grid-outline"></ion-icon>
                         <span>Inicio</span>
                     </a>

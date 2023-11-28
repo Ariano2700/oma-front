@@ -4,7 +4,6 @@ const roleURL = () => {
 };
 const rolInURl = roleURL();
 
-
 function goTablaAlimento() {
   window.location.href = `../../TABLAS/TablaAlimento/alimentotb.php?role=${rolInURl}`;
 }
@@ -25,4 +24,8 @@ function goTablaTrabajador() {
 }
 function goTablaRoles() {
   window.location.href = `../../TABLAS/TablaTrabajadorRol/roltb.php?role=${rolInURl}`;
+}
+
+function goIndex() {
+  window.location.href = `../../Main/indexView/index.php?role=${rolInURl}`;
 }

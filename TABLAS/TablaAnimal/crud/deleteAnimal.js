@@ -4,7 +4,7 @@ deleteTb.addEventListener("click", function (e) {
   eliminarAnimal();
 });
 function eliminarAnimal() {
-  const idAnimal = document.getElementById("id_animal").value;
+  const idAnimal = document.getElementById("SelectAnimal").value;
 
   if (!idAnimal || isNaN(idAnimal)) {
     const title = "Falta ID";

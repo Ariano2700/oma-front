@@ -8,7 +8,7 @@ editTb.addEventListener("click", function (e) {
 
 function actualizarAnimal() {
   /*Inputs*/
-  const idAnimalInput = document.getElementById("id_animal").value;
+  const idAnimalInput = document.getElementById("SelectAnimal").value;
   const nombreInput = document.getElementById("nombre").value;
   const edadInput = document.getElementById("edad").value;
   const sexoSelect = document.getElementById("sexo").value;

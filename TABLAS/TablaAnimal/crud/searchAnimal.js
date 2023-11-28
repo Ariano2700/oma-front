@@ -1,7 +1,7 @@
 const searchTb = document.getElementById("searchTb");
 
 function buscarAnimal() {
-  const idAnimal = document.getElementById("id_animal").value;
+  const idAnimal = document.getElementById("SelectAnimal").value;
   console.log(idAnimal);
   if (!idAnimal) {
     alert("Ingresa un ID para buscar.");

@@ -1,7 +1,68 @@
+function alertNoComplete(title, text) {
+  const alertNoComplete = Swal.fire({
+    title: title,
+    text: text,
+    icon: "error",
+    confirmButtonText: "Aceptar",
+  });
+  return alertNoComplete;
+}
+
+const roleParamURL = () => {
+  const rol = new URLSearchParams(window.location.search).get("role");
+  return rol;
+};
+const rolInParam = roleParamURL();
+
 const redirectIMG = document.getElementById("redirectIMG");
-redirectIMG.addEventListener('click', () =>{
-  window.location.href = 'showANDpost-img/showPostImg.html'
-})
+redirectIMG.addEventListener("click", () => {
+  window.location.href = `showANDpost-img/showPostImg.html?role=${rolInParam}`;
+});
+const redirectAnimalPerfil = document.getElementById("redirectAnimalPerfil");
+redirectAnimalPerfil.addEventListener("click", () => {
+  const idAnimal = document.getElementById("SelectAnimal").value;
+  if (!idAnimal || isNaN(idAnimal)) {
+    const title = "Falta ID";
+    const text =
+      "Se tiene que colocar un ID valido para realizar esta operacion";
+    alertNoComplete(title, text);
+  } else {
+    window.location.href = `../../animal_profile/animalProfile.html?role=${rolInParam}&animalID=${idAnimal}`;
+  }
+});
+/*Mostrar total de animales */
+async function mostrarDatosAnimales() {
+  try {
+    const response = await fetch("http://localhost:8080/api/animal/all", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al obtener datos de roles");
+    }
+    const data = await response.json();
+
+    if (data) {
+      const SelectAnimal = document.getElementById("SelectAnimal");
+      if (SelectAnimal) {
+        data.forEach((data) => {
+          const idAnimal = data.idAnimal;
+          const nombreAnimal = data.nombreAnimal;
+          const option = document.createElement("option");
+          option.value = idAnimal;
+          option.text = nombreAnimal;
+          SelectAnimal.appendChild(option);
+        });
+      }
+    }
+  } catch (error) {
+    console.error("Error al obtener datos de roles: " + error);
+  }
+}
+mostrarDatosAnimales();
+/*Mostrar total de animales */
+
 async function ConfigTable() {
   try {
     const languageResponse = await fetch("../table_config/languageConfig.json");
