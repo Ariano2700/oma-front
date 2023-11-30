@@ -6,16 +6,13 @@ editTb.addEventListener("click", function (e) {
   actualizarAlimento();
 });
 
-function formatFechaCompra(fecha_compra) {
-  const fechaCompraDate = new Date(fecha_compra);
-
-  const year = fechaCompraDate.getUTCFullYear();
-  const month = String(fechaCompraDate.getUTCMonth() + 1).padStart(2, "0");
-  const day = String(fechaCompraDate.getUTCDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
-}
-
+/*function formatFechaCompra(fecha_compra) {
+  const FechaNacUTC = new Date(fecha_compra); // Agrega "T00:00:00Z" para indicar la hora a las 00:00:00 en UTC
+  FechaNacUTC.setDate(FechaNacUTC.getDate() + 1);
+  const fechaCompletae = FechaNacUTC.toISOString();
+  return fechaCompletae;
+  //return `${year}-${month}-${day}`;
+}*/
 
 function actualizarAlimento() {
   const idAlimento = document.getElementById("SelectAlimento").value;
@@ -25,6 +22,10 @@ function actualizarAlimento() {
   const precioUnitario = document.getElementById("precio_unitario").value;
   const volumen = document.getElementById("volumen").value;
   const stock = document.getElementById("stock").value;
+
+  /*FECHA FORMAT */
+  const FechaCompraUTC = new Date(fechaCompra);
+  FechaCompraUTC.setDate(FechaCompraUTC.getDate() + 1);
 
   // Realizar validaciones
   if (
@@ -58,10 +59,9 @@ function actualizarAlimento() {
     confirmButtonText: "Si, actualizar datos",
   }).then((result) => {
     if (result.isConfirmed) {
-      const fechaCompraFormat = formatFechaCompra(fechaCompra);
       const data = {
         marca: marca,
-        fecha_compra: fechaCompra,
+        fecha_compra: FechaCompraUTC.toISOString(),
         precio_unitario: precioUnitario,
         volumen: volumen,
         stock: stock,

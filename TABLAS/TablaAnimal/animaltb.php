@@ -17,7 +17,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   <title>Animal | OMA</title>
 
   <!--enlace a css -->
-  <link rel="stylesheet" href="style.css">
 
   <!--estilos css de bootstrap-->
   <link type="text/css" rel="stylesheet"

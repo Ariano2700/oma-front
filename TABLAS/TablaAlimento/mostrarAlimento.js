@@ -54,8 +54,8 @@ function formatFechaCompra(fecha_compra) {
   const day = String(fechaCompraDate.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
-function formatMoney(precio){
-  return `S/ ${precio}`
+function formatMoney(precio) {
+  return `S/ ${precio}`;
 }
 async function obtenerDatosAlimentos() {
   try {

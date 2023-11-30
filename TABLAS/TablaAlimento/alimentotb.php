@@ -17,7 +17,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   <title>Alimento | OMA</title>
 
   <!--enlace a css -->
-  <link rel="stylesheet" href="style.css">
   <!--estilos css e iconos de bootstrap-->
   <?php require_once "../../Librerias/LibreriasCss.php" ?>
 

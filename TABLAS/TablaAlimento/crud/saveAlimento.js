@@ -3,13 +3,13 @@ const formAlimento = document.getElementById("formAlimento");
 /*BOTONES */
 const saveTb = document.getElementById("saveTb");
 
-function formatFechaCompra(fecha_compra) {
+/*function formatFechaCompra(fecha_compra) {
   const fechaCompraDate = new Date(fecha_compra);
   const year = fechaCompraDate.getFullYear();
   const month = String(fechaCompraDate.getMonth() + 1).padStart(2, "0");
   const day = String(fechaCompraDate.getDate() + 1).padStart(2, "0");
   return `${year}-${month}-${day}`;
-}
+}*/
 
 function saveData() {
   /*Inputs*/
@@ -24,7 +24,9 @@ function saveData() {
       "Faltan campos en el formulario para completar la subida de datos";
     alertNoComplete(title, text);
   } else {
-    const fechaFormat = formatFechaCompra(fechaCompra);
+    const FechaCompraUTC = new Date(fechaCompra);
+    FechaCompraUTC.setDate(FechaCompraUTC.getDate() + 1);
+    //const fechaFormat = formatFechaCompra(fechaCompra);
     Swal.fire({
       title: "¿Estas seguro de los datos?",
       text: "Los datos se subiran a la tabla seleccionada!",
@@ -37,7 +39,7 @@ function saveData() {
       if (result.isConfirmed) {
         const dataToSend = {
           marca: marca,
-          fecha_compra: fechaFormat,
+          fecha_compra: FechaCompraUTC.toISOString(),
           precio_unitario: precioUnitario,
           volumen: volumen,
           stock: stock,
