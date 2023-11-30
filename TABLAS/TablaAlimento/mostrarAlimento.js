@@ -15,6 +15,38 @@ async function ConfigTable() {
     throw error;
   }
 }
+/*Mostrar total de alimentos */
+async function mostrarDatosAlimentos() {
+  try {
+    const response = await fetch("http://localhost:8080/api/alimento/all", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al obtener datos de roles");
+    }
+    const data = await response.json();
+
+    if (data) {
+      const SelectAlimento = document.getElementById("SelectAlimento");
+      if (SelectAlimento) {
+        data.forEach((data) => {
+          const idAlimento = data.idAlimento;
+          const nombreAlimento = data.marca;
+          const option = document.createElement("option");
+          option.value = idAlimento;
+          option.text = nombreAlimento;
+          SelectAlimento.appendChild(option);
+        });
+      }
+    }
+  } catch (error) {
+    console.error("Error al obtener datos de roles: " + error);
+  }
+}
+mostrarDatosAlimentos();
+/*Mostrar total de alimentos */
 function formatFechaCompra(fecha_compra) {
   const fechaCompraDate = new Date(fecha_compra);
   const year = fechaCompraDate.getFullYear();

@@ -1,12 +1,12 @@
 const deleteEspecieButton = document.getElementById("deleteTb");
 
 deleteEspecieButton.addEventListener("click", function (e) {
-  //e.preventDefault();
+  e.preventDefault();
   eliminarEspecie();
 });
 
 function eliminarEspecie() {
-  const idEspecie = document.getElementById("id_especie").value;
+  const idEspecie = document.getElementById("SelectEspecie").value;
 
   if (!idEspecie) {
     const title = "Falta ID";

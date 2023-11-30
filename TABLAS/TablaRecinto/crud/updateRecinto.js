@@ -8,7 +8,7 @@ editTb.addEventListener("click", function (e) {
 
 function actualizarAnimal() {
   /*Inputs*/
-  const idRecintoInput = document.getElementById("id_recinto").value;
+  const idRecintoInput = document.getElementById("SelectRecinto").value;
   const nombreInput = document.getElementById("nombre").value;
   const tipoInput = document.getElementById("tipo").value;
   const estadoInput = document.getElementById("estado").value;

@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
     //console.log(valido);
     valido === true
       ? iniciarSesion(param, password)
-      : alertNoComplete(title, text)//falta colocar ',' para usar el console log
-      //console.log("El correo no existe en la bd");
+      : alertNoComplete(title, text); //falta colocar ',' para usar el console log
+    //console.log("El correo no existe en la bd");
   }
   async function obtenerRol(rol) {
     try {
@@ -154,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  /*FUNCION DE ALERTA DINAMICOS CON SWEET ALERT */
   function alertNoComplete(title, text) {
     const alertNoComplete = Swal.fire({
       title: title,
@@ -163,7 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     return alertNoComplete;
   }
-
   function alertSuccess(role) {
     const alertSuccess = Swal.fire({
       title: "¡Bienvenido!",
@@ -173,4 +173,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     return alertSuccess;
   }
+  /*FUNCION DE ALERTA DINAMICOS CON SWEET ALERT */
 });

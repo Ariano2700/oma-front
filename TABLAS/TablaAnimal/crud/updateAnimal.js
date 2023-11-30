@@ -14,8 +14,8 @@ function actualizarAnimal() {
   const sexoSelect = document.getElementById("sexo").value;
   const tipoInput = document.getElementById("tipo").value;
   const estadoInput = document.getElementById("estado").value;
-  const idRecinto = document.getElementById("id_recinto").value;
-  const idEspecie = document.getElementById("id_especie").value;
+  const idRecinto = document.getElementById("SelectRecinto").value;
+  const idEspecie = document.getElementById("SelectEspecie").value;
 
   // Realizar validaciones
   if (

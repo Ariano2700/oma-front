@@ -14,7 +14,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TABLA ANIMAL</title>
+  <title>Animal | OMA</title>
 
   <!--enlace a css -->
   <link rel="stylesheet" href="style.css">
@@ -99,12 +99,24 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 <input type="text" id="estado" name="estado" class="form-control" required>
               </div>
               <div class="form-group col-md-4">
-                <label for="id_especie">Id especie:</label>
-                <input type="number" id="id_especie" name="id_especie" class="form-control" required>
+                <!--<label for="id_especie">Id especie:</label>
+                <input type="number" id="id_especie" name="id_especie" class="form-control" required>-->
+                <label for="SelectEspecie">Seleccionar especie</label>
+                <select id="SelectEspecie" name="SelectEspecie" class="form-control">
+                  <option selected disabled value="noIMG-select">
+                    Escoger especie
+                  </option>
+                </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="id_recinto">Id recinto:</label>
-                <input type="number" id="id_recinto" name="id_recinto" class="form-control" required>
+                <!--<label for="id_recinto">Id recinto:</label>
+                <input type="number" id="id_recinto" name="id_recinto" class="form-control" required>-->
+                <label for="SelectRecinto">Seleccionar recinto</label>
+                <select id="SelectRecinto" name="SelectRecinto" class="form-control">
+                  <option selected disabled value="noIMG-select">
+                    Escoger recinto
+                  </option>
+                </select>
               </div>
 
             </div>

@@ -6,7 +6,7 @@ updateEspecieButton.addEventListener("click", function (e) {
 });
 
 function actualizarEspecie() {
-  const idEspecie = document.getElementById("id_especie").value;
+  const idEspecie = document.getElementById("SelectEspecie").value;
 
   if (!idEspecie) {
     alert("Ingresa el ID de la especie que deseas actualizar.");

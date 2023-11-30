@@ -4,7 +4,7 @@ deleteTb.addEventListener("click", function (e) {
   eliminarRecinto();
 });
 function eliminarRecinto() {
-  const idRecinto = document.getElementById("id_recinto").value;
+  const idRecinto = document.getElementById("SelectRecinto").value;
 
   if (!idRecinto || isNaN(idRecinto)) {
     const title = "Falta ID";

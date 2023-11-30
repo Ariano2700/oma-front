@@ -7,13 +7,15 @@ function alertNoComplete(title, text) {
   });
   return alertNoComplete;
 }
-
+/* OBTENER ROL DEL PARAMETRO */
 const roleParamURL = () => {
   const rol = new URLSearchParams(window.location.search).get("role");
   return rol;
 };
 const rolInParam = roleParamURL();
+/* OBTENER ROL DEL PARAMETRO */
 
+/*REDIRECCIONES CON PARAMETROS */
 const redirectIMG = document.getElementById("redirectIMG");
 redirectIMG.addEventListener("click", () => {
   window.location.href = `showANDpost-img/showPostImg.html?role=${rolInParam}`;
@@ -30,10 +32,12 @@ redirectAnimalPerfil.addEventListener("click", () => {
     window.location.href = `../../animal_profile/animalProfile/animalProfile.php?role=${rolInParam}&animalID=${idAnimal}`;
   }
 });
-/*Mostrar total de animales */
-async function mostrarDatosAnimales() {
+/*REDIRECCIONES CON PARAMETROS */
+
+/*Mostrar total de datos */
+async function mostrarDatos(tablaShow, idTabla, nombreShow, Select) {
   try {
-    const response = await fetch("http://localhost:8080/api/animal/all", {
+    const response = await fetch(`http://localhost:8080/api/${tablaShow}/all`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -44,25 +48,26 @@ async function mostrarDatosAnimales() {
     const data = await response.json();
 
     if (data) {
-      const SelectAnimal = document.getElementById("SelectAnimal");
-      if (SelectAnimal) {
+      const SelectForaneo = document.getElementById(`${Select}`);
+      if (SelectForaneo) {
         data.forEach((data) => {
-          const idAnimal = data.idAnimal;
-          const nombreAnimal = data.nombreAnimal;
+          const idTablaForanea = data[idTabla];
+          const nombreTablaForanea = data[nombreShow];
           const option = document.createElement("option");
-          option.value = idAnimal;
-          option.text = nombreAnimal;
-          SelectAnimal.appendChild(option);
+          option.value = idTablaForanea;
+          option.text = nombreTablaForanea;
+          SelectForaneo.appendChild(option);
         });
       }
     }
   } catch (error) {
-    console.error("Error al obtener datos de roles: " + error);
+    console.error("Error al obtener datos: " + error);
   }
 }
-mostrarDatosAnimales();
-/*Mostrar total de animales */
-
+mostrarDatos("especie", "idEspecie", "especie", "SelectEspecie");
+mostrarDatos("animal", "idAnimal", "nombreAnimal", "SelectAnimal");
+mostrarDatos("recinto", "idRecinto", "nombre", "SelectRecinto");
+/*Mostrar total de datos */
 async function ConfigTable() {
   try {
     const languageResponse = await fetch("../table_config/languageConfig.json");

@@ -14,7 +14,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recinto</title>
+  <title>Recinto | OMA</title>
 
   <!--enlace a css -->
   <link rel="stylesheet" href="style.css">
@@ -67,8 +67,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           <fieldset>
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="id_recinto">Id_Recinto</label>
-                <input type="number" id="id_recinto" name="id_recinto" class="form-control" required>
+                <!--<label for="id_recinto">Id_Recinto</label>
+                <input type="number" id="id_recinto" name="id_recinto" class="form-control" required>-->
+                <label for="SelectRecinto">Seleccionar recinto</label>
+                <select id="SelectRecinto" name="SelectRecinto" class="form-control">
+                  <option selected disabled value="noIMG-select">
+                    Escoger recinto
+                  </option>
+                </select>
               </div>
               <div class="form-group col-md-4">
                 <label for="nombre">Nombre:</label>

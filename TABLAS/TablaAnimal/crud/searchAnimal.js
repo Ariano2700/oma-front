@@ -17,8 +17,8 @@ function buscarAnimal() {
         document.getElementById("sexo").value = data.sexo;
         document.getElementById("tipo").value = data.tipo;
         document.getElementById("estado").value = data.estado;
-        document.getElementById("id_recinto").value = data.idRecinto;
-        document.getElementById("id_especie").value = data.idEspecie;
+        document.getElementById("SelectRecinto").value = data.idRecinto;
+        document.getElementById("SelectEspecie").value = data.idEspecie;
         
       } else {
         alert("No se encontró ningún animal con ese ID.");

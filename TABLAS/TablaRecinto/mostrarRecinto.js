@@ -15,7 +15,38 @@ async function ConfigTable() {
     throw error;
   }
 }
+/*Mostrar total de recintos */
+async function mostrarDatosRecintos() {
+  try {
+    const response = await fetch("http://localhost:8080/api/recinto/all", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
 
+    if (!response.ok) {
+      throw new Error("Error al obtener datos de roles");
+    }
+    const data = await response.json();
+
+    if (data) {
+      const SelectRecinto = document.getElementById("SelectRecinto");
+      if (SelectRecinto) {
+        data.forEach((data) => {
+          const idRecinto = data.idRecinto;
+          const nombreRecinto = data.nombre;
+          const option = document.createElement("option");
+          option.value = idRecinto;
+          option.text = nombreRecinto;
+          SelectRecinto.appendChild(option);
+        });
+      }
+    }
+  } catch (error) {
+    console.error("Error al obtener datos de los recintos: " + error);
+  }
+}
+mostrarDatosRecintos();
+/*Mostrar total de recintos */
 async function obtenerDatosRecintos() {
   try {
     const response = await fetch("http://localhost:8080/api/recinto/all", {

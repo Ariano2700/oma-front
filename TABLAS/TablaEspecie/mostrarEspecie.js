@@ -15,6 +15,73 @@ async function ConfigTable() {
     throw error;
   }
 }
+/*Mostrar total de especies */
+/*async function mostrarDatosEspecies() {
+  try {
+    const response = await fetch("http://localhost:8080/api/especie/all", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al obtener datos de roles");
+    }
+    const data = await response.json();
+
+    if (data) {
+      const SelectEspecie = document.getElementById("SelectEspecie");
+      if (SelectEspecie) {
+        data.forEach((data) => {
+          const idEspecie = data.idEspecie;
+          const nombreEspecie = data.especie;
+          const option = document.createElement("option");
+          option.value = idEspecie;
+          option.text = nombreEspecie;
+          SelectEspecie.appendChild(option);
+        });
+      }
+    }
+  } catch (error) {
+    console.error("Error al obtener datos de las especies: " + error);
+  }
+}
+mostrarDatosEspecies();*/
+/*Mostrar total de especies */
+
+/*Mostrar total de datos */
+async function mostrarDatos(tablaShow, idTabla, nombreShow, Select) {
+  try {
+    const response = await fetch(`http://localhost:8080/api/${tablaShow}/all`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al obtener datos de roles");
+    }
+    const data = await response.json();
+
+    if (data) {
+      const SelectForaneo= document.getElementById(`${Select}`);
+      if (SelectForaneo) {
+        data.forEach((data) => {
+          const idTablaForanea = data[idTabla];
+          const nombreTablaForanea = data[nombreShow];
+          const option = document.createElement("option");
+          option.value = idTablaForanea;
+          option.text = nombreTablaForanea;
+          SelectForaneo.appendChild(option);
+        });
+      }
+    }
+  } catch (error) {
+    console.error("Error al obtener datos: " + error);
+  }
+}
+mostrarDatos("especie","idEspecie","especie","SelectEspecie");
+mostrarDatos("categoriaamenaza","idCategoriaAmenaza","minagri","SelectCatAme");
+mostrarDatos("alimento","idAlimento","marca","SelectAlimento");
+/*Mostrar total de datos */
 async function getNameCatAme(idCategoriaAmenaza) {
   try {
     const response = await fetch(
@@ -149,7 +216,7 @@ async function mostrarTablaEspecie() {
       },
     },
     language: {
-      url: 'https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-MX.json'
+      url: "https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-MX.json",
     },
     order: [[0, "desc"]],
     lengthMenu: [10, 20, 30, 40, 50],

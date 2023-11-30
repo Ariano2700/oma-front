@@ -14,10 +14,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Especie</title>
-
-  <!--enlace a css -->
-  <link rel="stylesheet" href="style.css">
+  <title>Especie | OMA</title>
 
   <!--estilos css de bootstrap-->
   <link type="text/css" rel="stylesheet"
@@ -67,8 +64,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           <fieldset>
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="id_especie">Id_especie</label>
-                <input type="number" id="id_especie" name="id_especie" class="form-control">
+                <!--<label for="id_especie">Id_especie</label>
+                <input type="number" id="id_especie" name="id_especie" class="form-control">-->
+                <label for="SelectEspecie">Seleccionar especie</label>
+                <select id="SelectEspecie" name="SelectEspecie" class="form-control">
+                  <option selected disabled value="noIMG-select">
+                    Escoger especie
+                  </option>
+                </select>
               </div>
               <div class="form-group col-md-4">
                 <label for="clase">Clase:</label>
@@ -99,13 +102,25 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 <input type="text" id="genero" name="genero" class="form-control" required>
               </div>
               <div class="form-group col-md-4">
-                <label for="id_categoria_amenaza">ID Categoría Amenaza:</label>
+                <!--<label for="id_categoria_amenaza">ID Categoría Amenaza:</label>
                 <input type="number" id="id_categoria_amenaza" name="id_categoria_amenaza" class="form-control"
-                  required>
+                  required>-->
+                <label for="SelectCatAme">Seleccionar categoria amenaza</label>
+                <select id="SelectCatAme" name="SelectCatAme" class="form-control">
+                  <option selected disabled value="noIMG-select">
+                    Escoger categoria amenaza
+                  </option>
+                </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="id_alimento">ID Alimento:</label>
-                <input type="number" id="id_alimento" name="id_alimento" class="form-control" required>
+                <!--<label for="id_alimento">ID Alimento:</label>
+                <input type="number" id="id_alimento" name="id_alimento" class="form-control" required>-->
+                <label for="SelectAlimento">Seleccionar alimento</label>
+                <select id="SelectAlimento" name="SelectAlimento" class="form-control">
+                  <option selected disabled value="noIMG-select">
+                    Escoger alimento
+                  </option>
+                </select>
               </div>
             </div>
             <div class="text-center">

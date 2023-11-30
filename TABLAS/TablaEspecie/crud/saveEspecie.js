@@ -14,10 +14,8 @@ function saveEspecie() {
   const orden = document.getElementById("orden").value;
   const familia = document.getElementById("familia").value;
   const genero = document.getElementById("genero").value;
-  const idCategoriaAmenaza = document.getElementById(
-    "id_categoria_amenaza"
-  ).value;
-  const idAlimento = document.getElementById("id_alimento").value;
+  const idCategoriaAmenaza = document.getElementById("SelectCatAme").value;
+  const idAlimento = document.getElementById("SelectAlimento").value;
 
   if (
     !clase ||

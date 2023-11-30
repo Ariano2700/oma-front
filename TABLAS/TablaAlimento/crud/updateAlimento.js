@@ -6,8 +6,19 @@ editTb.addEventListener("click", function (e) {
   actualizarAlimento();
 });
 
+function formatFechaCompra(fecha_compra) {
+  const fechaCompraDate = new Date(fecha_compra);
+
+  const year = fechaCompraDate.getUTCFullYear();
+  const month = String(fechaCompraDate.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(fechaCompraDate.getUTCDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+
 function actualizarAlimento() {
-  const idAlimento = document.getElementById("id_alimento").value;
+  const idAlimento = document.getElementById("SelectAlimento").value;
   /*Inputs*/
   const marca = document.getElementById("marca").value;
   const fechaCompra = document.getElementById("fecha_compra").value;
@@ -47,6 +58,7 @@ function actualizarAlimento() {
     confirmButtonText: "Si, actualizar datos",
   }).then((result) => {
     if (result.isConfirmed) {
+      const fechaCompraFormat = formatFechaCompra(fechaCompra);
       const data = {
         marca: marca,
         fecha_compra: fechaCompra,
@@ -54,38 +66,38 @@ function actualizarAlimento() {
         volumen: volumen,
         stock: stock,
       };
-    
-    fetch(
-      `http://localhost:8080/api/alimento/actualizar/alimento/${idAlimento}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
-      .then((response) => {
-        if (response.ok) {
-          Swal.fire({
-            title: "¡Datos actualizados!",
-            text: "Los datos han sido actualizados satisfactoriamente.",
-            icon: "success",
-            confirmButtonText: "Aceptar",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location.reload();
-            }
-          });
-        } else {
-          const title = "Datos no mandados";
-          const text = "Error al actualizar los datos";
-          alertNoComplete(title, text);
+
+      fetch(
+        `http://localhost:8080/api/alimento/actualizar/alimento/${idAlimento}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
         }
-      })
-      .catch((error) => {
-        console.error("Error al realizar la solicitud PUT:", error);
-      });
+      )
+        .then((response) => {
+          if (response.ok) {
+            Swal.fire({
+              title: "¡Datos actualizados!",
+              text: "Los datos han sido actualizados satisfactoriamente.",
+              icon: "success",
+              confirmButtonText: "Aceptar",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.reload();
+              }
+            });
+          } else {
+            const title = "Datos no mandados";
+            const text = "Error al actualizar los datos";
+            alertNoComplete(title, text);
+          }
+        })
+        .catch((error) => {
+          console.error("Error al realizar la solicitud PUT:", error);
+        });
     }
   });
 }

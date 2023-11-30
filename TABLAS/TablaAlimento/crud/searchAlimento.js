@@ -1,7 +1,7 @@
 const searchTb = document.getElementById("searchTb");
 
 function buscarAlimento() {
-  const idAlimento = document.getElementById("id_alimento").value;
+  const idAlimento = document.getElementById("SelectAlimento").value;
   console.log(idAlimento);
   if (!idAlimento) {
     alert("Ingresa un ID para buscar.");

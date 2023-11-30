@@ -1,7 +1,7 @@
 const searchTb = document.getElementById("searchTb");
 
 function buscarRecinto() {
-  const idRecinto = document.getElementById("id_recinto").value;
+  const idRecinto = document.getElementById("SelectRecinto").value;
   console.log(idRecinto);
   if (!idRecinto) {
     alert("Ingresa un ID para buscar.");
